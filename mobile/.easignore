@@ -1,0 +1,24 @@
+# Uploaded to EAS for cloud builds. Mirrors .gitignore, except .env.local is kept:
+# it only holds the public Supabase URL and anon key the app needs for sync.
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.metro-health-check*
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.DS_Store
+*.pem
+*.tsbuildinfo
+example
+/ios
+/android

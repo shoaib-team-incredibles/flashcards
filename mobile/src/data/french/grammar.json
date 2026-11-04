@@ -1,0 +1,1804 @@
+{
+  "cards": [
+    {
+      "front": "What are the **definite articles** (the)?",
+      "back": "**le** (m), **la** (f), **l'** (before a vowel/mute h), **les** (plural)\n\n*le livre, la table, l'ami, les enfants*",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "What are the **indefinite articles** (a / some)?",
+      "back": "**un** (m), **une** (f), **des** (plural)\n\n*un chat, une maison, des amis*\n\n⚠️ *des* can't be dropped like English “some”: *J'ai **des** amis* = I have friends.",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "What are the **partitive articles** and when do you use them?",
+      "back": "**du** (m), **de la** (f), **de l'** (vowel), **des** (pl) = “some”, for uncountable amounts.\n\n*Je bois du café. Tu veux de l'eau ?*\n\nFrench needs an article where English often has none.",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "What happens to **un / une / du / de la / des** after a negation?",
+      "back": "They all become **de / d'**.\n\n*J'ai un chien → Je n'ai **pas de** chien.*\n*Je bois du lait → Je ne bois **pas de** lait.*\n\n*le / la / les* don't change: *Je n'aime pas **le** lait.*\nException: *être* — *Ce n'est pas **un** chien.*",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "What are the contractions of **à** and **de** with *le / les*?",
+      "back": "**à + le = au**, **à + les = aux**\n**de + le = du**, **de + les = des**\n\n*Je vais au cinéma. Le livre du prof.*\n\n(*à la, à l', de la, de l'* don't contract)",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "Why do you say *j'**aime le** café* but *je **bois du** café*?",
+      "back": "Verbs of preference (**aimer, adorer, détester, préférer**) take the **definite** article — you like coffee **in general**.\n\nDrinking/eating takes the **partitive** — you drink **some** coffee.\n\n*J'aime le café, alors je bois du café.*\n\n⚠️ English drops the article (“I like coffee”); French never does.",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "Tips for guessing a noun's **gender**?",
+      "back": "Usually **feminine**: *-tion, -sion, -té, -ée, -ette, -ure, -ence, -ance, -ie*\n\nUsually **masculine**: *-ment, -age, -eau, -isme, -oir, -at*, and days, months, languages.\n\nExceptions exist: *le musée, l'été (m), la plage, la page, l'image (f)*.\nAlways learn nouns **with their article**.",
+      "tags": [
+        "french",
+        "grammar",
+        "nouns"
+      ]
+    },
+    {
+      "front": "How do you form the **plural** of nouns?",
+      "back": "Usually add **-s** (silent).\n\n*-eau → -eaux* (gâteaux), *-al → -aux* (journaux), *-eu → -eux* (jeux) — but *bals, festivals, pneus*\n\nWords ending in *-s, -x, -z* don't change. Irregular: *l'œil → les yeux*.",
+      "tags": [
+        "french",
+        "grammar",
+        "nouns"
+      ]
+    },
+    {
+      "front": "What are the **subject pronouns**?",
+      "back": "**je** (I), **tu** (you, informal), **il / elle / on** (he/she/one-we), **nous** (we), **vous** (you formal or plural), **ils / elles** (they)\n\n**On** is used for “we” in everyday speech: *On y va ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "When do you use **tu** vs **vous**?",
+      "back": "**tu**: friends, family, children, peers your age (and animals!).\n\n**vous**: strangers, older people, work, shops — and anytime you're addressing more than one person.\n\nWhen in doubt use *vous*; wait for *On peut se tutoyer ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the **stressed (disjunctive) pronouns**?",
+      "back": "**moi, toi, lui, elle, nous, vous, eux, elles**\n\nUsed after prepositions and for emphasis:\n*avec **moi**, chez **toi**, **Moi**, je préfère le thé. C'est **lui**.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the **possessive adjectives** (my, your…)?",
+      "back": "**mon / ma / mes** (my), **ton / ta / tes**, **son / sa / ses** (his/her/its), **notre / nos**, **votre / vos**, **leur / leurs**\n\nThey agree with the **thing owned**, not the owner: *sa voiture* = his OR her car.\n\n⚠️ Before a feminine word starting with a vowel, *ma → mon*: *mon amie, mon histoire*.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do you conjugate a regular **-er** verb in the present? (parler)",
+      "back": "*je parl**e**, tu parl**es**, il parl**e**, nous parl**ons**, vous parl**ez**, ils parl**ent***\n\n-e, -es, -e, -ent all sound the same! ~90% of verbs are -er.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **être** in the present.",
+      "back": "*je **suis**, tu **es**, il **est**, nous **sommes**, vous **êtes**, ils **sont***",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **avoir** in the present.",
+      "back": "*j'**ai**, tu **as**, il **a**, nous **avons**, vous **avez**, ils **ont***",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **aller** in the present.",
+      "back": "*je **vais**, tu **vas**, il **va**, nous **allons**, vous **allez**, ils **vont***",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **faire** in the present.",
+      "back": "je **fais**, tu **fais**, il **fait**, nous **faisons** (\"fuh-zon\"), vous **faites**, ils **font**\n\n*Je fais du sport. Qu'est-ce que vous faites ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How do you make a sentence **negative**?",
+      "back": "**ne … pas** around the conjugated verb:\n\n*Je **ne** parle **pas** anglais.*\n*Je **n'**ai **pas** mangé.* (around the auxiliary)\n\nIn speech, *ne* is often dropped: *Je sais pas.*\n\n⚠️ No “do” in French: “I don't speak” → *Je ne parle pas*.",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "What are the **3 ways** to ask a yes/no question?",
+      "back": "1. **Intonation** (casual): *Tu viens ?*\n2. **Est-ce que** (neutral): *Est-ce que tu viens ?*\n3. **Inversion** (formal): *Viens-tu ?*\n\nInversion with *il/elle/on* adds **-t-** when the verb ends in a vowel: *Parle-**t**-il français ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "**Quel** vs **qu'est-ce que** — when do you use each?",
+      "back": "**Quel / quelle / quels / quelles** + noun (or *être*): *Quel âge as-tu ? Quelle est ton adresse ?*\n\n**Qu'est-ce que** = what (object): *Qu'est-ce que tu fais ?*\n**Qu'est-ce qui** = what (subject): *Qu'est-ce qui se passe ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "How do adjectives **agree**?",
+      "back": "In **gender and number** with the noun:\n\n*petit, petit**e**, petit**s**, petit**es***\n\n*-eux → -euse* (heureux/heureuse), *-if → -ive* (sportif/sportive), *-er → -ère* (cher/chère), *-en → -enne* (italien/italienne)",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "What are the idioms built with **avoir** (to be X in English)?",
+      "back": "*avoir faim* (hungry), *avoir soif* (thirsty), *avoir chaud/froid* (hot/cold), *avoir peur* (afraid), *avoir raison/tort* (right/wrong), *avoir sommeil* (sleepy), ***avoir 25 ans*** (to be 25), *avoir besoin de* (to need), *avoir envie de* (to feel like)\n\n⚠️ English says “I am 25”, but French: *J'**ai** 25 ans* (not *Je suis 25*).",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "Which **final consonants** are usually pronounced?",
+      "back": "Mostly silent! Exceptions: **C, R, F, L** (think *CaReFuL*): *sac, mer, neuf, sel*\n\nBut *-er* verb endings are *ay*: *parler* → *par-lay* (same for most *-er* nouns: *boulanger*).",
+      "tags": [
+        "french",
+        "grammar",
+        "pronunciation"
+      ]
+    },
+    {
+      "front": "What are the 4 **nasal vowels**?",
+      "back": "**an/en** (\"ahn\"): *enfant*\n**in/ain/ein** (\"an\"): *vin, pain*\n**on** (\"ohn\"): *bon*\n**un** (\"uhn\"): *un* (now often merged with *in*)\n\nAir goes through the nose; the *n* itself isn't pronounced.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronunciation"
+      ]
+    },
+    {
+      "front": "How do you pronounce the French **u** vs **ou**?",
+      "back": "**ou** = English *oo* (*vous, tout*).\n\n**u** = say *ee*, then round your lips like *oo* without moving your tongue (*tu, rue, vu*).\n\n*dessous* (below) vs *dessus* (above) — the difference matters!",
+      "tags": [
+        "french",
+        "grammar",
+        "pronunciation"
+      ]
+    },
+    {
+      "front": "What do the **accents** do?",
+      "back": "**é** (aigu) = *ay* sound: *café*\n**è / ê** = open *eh*: *mère, fête*\n**ç** = *s* before a/o/u: *ça, garçon*\n**ë / ï** (tréma) = pronounce separately: *Noël, naïf*\n**ê, â, î, ô, û** often mark a lost *s*: *forêt* = forest, *hôpital* = hospital",
+      "tags": [
+        "french",
+        "grammar",
+        "pronunciation"
+      ]
+    },
+    {
+      "front": "Does French have a separate form for *I am eating* / *I do eat*?",
+      "back": "No — the **simple present** covers all of them: *je mange* = I eat / I'm eating / I do eat.\n\nIt also covers the near future: *Je **pars** demain. J'**arrive** !* (I'm coming!)",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How do you use **il y a** (there is / there are)?",
+      "back": "**il y a** = there is **and** there are.\n\n*Il y a un problème. Il y a trois chambres.*\nNegative: *Il **n'y a pas de** pain.*\n*Qu'est-ce qu'il y a ?* = What's wrong?\n⚠️ Never plural: *il y a* trois chambres, not *il y sont*.\nPast: *il y **avait*** · future: *il **va y avoir***",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "What are the main **question words**?",
+      "back": "**où** (where), **quand** (when), **comment** (how), **pourquoi** (why → answer *parce que*), **combien (de)** (how much/many), **qui** (who), **quoi / que** (what)\n\n*Combien **de** frères tu as ? Comment tu t'appelles ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "How do you ask questions in **everyday spoken** French?",
+      "back": "Statement order + rising tone, question word **at the end** (or the start):\n\n*Tu vas **où** ? Il arrive **quand** ? C'est **qui** ? Ça coûte **combien** ?*\n\nAt the end, “what” is always **quoi**: *Tu fais **quoi** ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "How do you combine a question word with **est-ce que**?",
+      "back": "**Question word + est-ce que + normal order**:\n\n*Où **est-ce que** tu habites ?*\n*Quand **est-ce qu'**il arrive ?*\n*Pourquoi **est-ce que** tu ris ?*\n\nNeutral register — safe everywhere.",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "How do you say *me too* / *me neither*?",
+      "back": "Agreeing with a positive: **moi aussi**\nAgreeing with a negative: **moi non plus**\nDisagreeing with a negative: **moi si** · with a positive: **pas moi**\n\n*Je n'aime pas le froid. — **Moi non plus**.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you say **70–99**?",
+      "back": "**70** soixante-dix (60+10), **71** soixante et onze, **75** soixante-quinze\n**80** quatre-vingts (4×20), **81** quatre-vingt-un\n**90** quatre-vingt-dix, **99** quatre-vingt-dix-neuf\n\n(Belgium/Switzerland: *septante, nonante*.)",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "How do you **tell the time**?",
+      "back": "*Il est* + **heure(s)**:\n*3h15* → trois heures **et quart**\n*3h30* → trois heures **et demie**\n*3h45* → quatre heures **moins le quart**\n*3h50* → quatre heures **moins dix**\n**midi** / **minuit**\n\n24h (official): *15h30* = quinze heures trente. *Il est quelle heure ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "How do you say **dates**?",
+      "back": "**le** + number + month (lowercase): *le 14 juillet, le 3 mai*\nOnly the 1st is ordinal: *le **premier** janvier*\n\n*On est le combien aujourd'hui ? — On est le 5.*\nFull: *le lundi 3 mars 2025*",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "How do you say **prices**?",
+      "back": "Decimal **comma**; written *2,50 €*, spoken with the currency in the middle:\n*2,50 €* = deux euros cinquante\n*0,99 €* = quatre-vingt-dix-neuf centimes\n\n*Ça coûte combien ? / C'est combien ?*\n*Ça fait 12 euros.* (That comes to €12)",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "What are the **direct object pronouns**?",
+      "back": "**me, te, le / la, nous, vous, les**\n\nThey go **before the verb**: *Je **la** vois.* (I see her)\n*Tu **les** as ?* (Do you have them?)\n*le / la → l'* before a vowel: *Je **l'**aime.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the **indirect object pronouns**?",
+      "back": "**me, te, lui, nous, vous, leur** (replace *à + person*)\n\n*Je parle à Marie → Je **lui** parle.*\n*Je téléphone à mes parents → Je **leur** téléphone.*\n\n⚠️ *lui* = to him **or** to her.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What does the pronoun **y** replace?",
+      "back": "**à + thing** or a **place**: *there*.\n\n*Tu vas à Paris ? Oui, j'**y** vais.*\n*Je pense à mon examen → J'**y** pense.*\n\nFixed: *Allons-y ! Il y a…*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What does the pronoun **en** replace?",
+      "back": "**de + thing**, a partitive, or a quantity: “some / of it / of them”.\n\n*Tu veux du café ? Oui, j'**en** veux.*\n*Il parle de son travail → Il **en** parle.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do you conjugate a regular **-ir** verb in the present? (finir)",
+      "back": "je fin**is**, tu fin**is**, il fin**it**, nous fin**issons**, vous fin**issez**, ils fin**issent**\n\n⚠️ Many *-ir* verbs are irregular: *partir, venir, ouvrir*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How do you conjugate a regular **-re** verb in the present? (vendre)",
+      "back": "*je vend**s**, tu vend**s**, il vend, nous vend**ons**, vous vend**ez**, ils vend**ent***\n\nThe *d* is silent in *je vends*, *il vend*, but heard in *ils vendent*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **pouvoir** and **vouloir** in the present.",
+      "back": "**pouvoir**: *je peux, tu peux, il peut, nous pouvons, vous pouvez, ils peuvent*\n\n**vouloir**: *je veux, tu veux, il veut, nous voulons, vous voulez, ils veulent*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **venir** and **prendre** in the present.",
+      "back": "**venir**: *je viens, tu viens, il vient, nous venons, vous venez, ils viennent*\n\n**prendre**: *je prends, tu prends, il prend, nous prenons, vous prenez, ils prennent*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How do you say *I've been living here for 3 years* (ongoing action)?",
+      "back": "**Present tense + depuis**:\n\n*J'**habite** ici **depuis** trois ans.*\n\nFrench uses the present because the action is still going on.\n\n⚠️ English uses “have been”, but *J'ai habité ici depuis…* ✗",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "What are **reflexive verbs** and how do they conjugate? (se lever)",
+      "back": "Verbs with a pronoun matching the subject: **me, te, se, nous, vous, se**\n\n*je **me** lève, tu **te** lèves, il **se** lève, nous **nous** levons…*\n\nDaily routine: *se réveiller, s'habiller, se coucher*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How do you form the **passé composé**?",
+      "back": "**avoir / être (present) + past participle**\n\n*J'**ai mangé**. Elle **est partie**.*\n\nUsed for completed actions: “I ate / I have eaten”.",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do you form **past participles** of regular verbs?",
+      "back": "**-er → -é**: *parler → parlé*\n**-ir → -i**: *finir → fini*\n**-re → -u**: *vendre → vendu*\n\n*J'ai parlé. J'ai fini. J'ai vendu.*",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "Give the irregular past participles of **être, avoir, faire, prendre, voir, mettre, pouvoir, dire**.",
+      "back": "été, eu, fait, pris, vu, mis, pu, dit\n\nAlso: *venir → venu, écrire → écrit, lire → lu, boire → bu, ouvrir → ouvert*",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "Which verbs use **être** in the passé composé?",
+      "back": "**DR & MRS VANDERTRAMP**: Devenir, Revenir, Monter, Rester, Sortir, Venir, Aller, Naître, Descendre, Entrer, Rentrer, Tomber, Retourner, Arriver, Mourir, Partir\n\nMostly movement/change of state; also *passer* (*je suis passé*).\n…plus **all reflexive verbs** (*je me suis levé*).",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "When does the past participle **agree** with *être*?",
+      "back": "With **être**, it agrees with the **subject** in gender and number:\n\n*Il est allé. Elle est allé**e**. Ils sont allé**s**. Elles sont allé**es**.*\n\nWith *avoir*, no agreement with the subject: *Elle **a** mangé.*",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do you form the **imparfait**?",
+      "back": "Take the **nous** form, drop **-ons**, add **-ais, -ais, -ait, -ions, -iez, -aient**\n\n*nous parlons → je parl**ais***\n\nOnly irregular stem: **être → ét-** (*j'étais*).",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "**Passé composé** vs **imparfait** — what's the difference?",
+      "back": "**Imparfait** = background, description, habits, ongoing states: *Il **pleuvait**. Quand j'étais petit, je **jouais**…*\n\n**Passé composé** = specific completed events: *Soudain, le téléphone **a sonné**.*\n\nThink: imparfait = the movie set, passé composé = the action.",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do you say *I just ate* (recent past)?",
+      "back": "**venir de + infinitive**\n\n*Je **viens de** manger.* (I just ate)\n*Il **vient d'**arriver.* (He just arrived)",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do you form the **futur proche** (going to)?",
+      "back": "**aller (present) + infinitive**\n\n*Je **vais manger**. On **va voir**.*\n\nThe most common way to talk about the future in speech.",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How do you form the **imperative** (commands)?",
+      "back": "Use **tu, nous, vous** present forms without the pronoun.\n\n*Viens ! Allons-y ! Parlez plus lentement.*\n\n**-er verbs drop the -s** in the *tu* form: *Parle ! Mange !*",
+      "tags": [
+        "french",
+        "grammar",
+        "imperative"
+      ]
+    },
+    {
+      "front": "What do **ne…jamais / ne…rien / ne…personne / ne…plus / ne…que** mean?",
+      "back": "**ne…jamais** = never\n**ne…rien** = nothing\n**ne…personne** = nobody\n**ne…plus** = no longer / not anymore\n**ne…que** = only (*Je n'ai que 5 €*)",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "Where do adjectives go — before or after the noun?",
+      "back": "Most go **after**: *une voiture **rouge***.\n\n**BAGS** adjectives go **before**: **B**eauty (beau, joli), **A**ge (jeune, vieux, nouveau), **G**oodness (bon, mauvais), **S**ize (grand, petit, gros)\n\n*un **petit** chat, une **belle** maison*",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "What are the special forms of **beau, nouveau, vieux** before a masculine vowel?",
+      "back": "**bel, nouvel, vieil**\n\n*un **bel** homme, un **nouvel** ami, un **vieil** arbre*",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "How do you make **comparisons**?",
+      "back": "**plus … que** (more than), **moins … que** (less than), **aussi … que** (as … as)\n\n*Il est **plus** grand **que** moi.*\n\nIrregular: **bon → meilleur**, **bien → mieux**.\n\n⚠️ *plus bon* ✗ → *meilleur*.",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "How do you form the **superlative**?",
+      "back": "**le / la / les + plus / moins + adjective**\n\n*C'est **la plus** belle ville. C'est **le meilleur** restaurant.*\n\nIf the adjective goes after the noun, repeat the article: *la ville **la plus** intéressante*.",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "How do you form **adverbs** from adjectives?",
+      "back": "Add **-ment** to the **feminine** form: *lent → lente → lent**ement***\n\n*-ant → -amment* (*courant → couramment*), *-ent → -emment* (*évident → évidemment*)\n\nAdjectives ending in a vowel use the masculine: *vrai → vraiment, poli → poliment*.\nIrregular: *bon → bien, mauvais → mal*.",
+      "tags": [
+        "french",
+        "grammar",
+        "adverbs"
+      ]
+    },
+    {
+      "front": "Which prepositions go with **cities** and **countries**?",
+      "back": "**à** + city: *à Paris*\n**en** + feminine country (most ending in -e) or vowel: *en France, en Iran*\n**au** + masculine country: *au Japon, au Canada*\n**aux** + plural: *aux États-Unis*\n\n⚠️ Masculine despite *-e*: *au Mexique, au Cambodge*.",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "**pendant**, **depuis** or **il y a**?",
+      "back": "**pendant** = for a finished duration: *J'ai dormi **pendant** 8 heures.*\n**depuis** = since/for, still ongoing: *J'attends **depuis** 10 minutes.*\n**il y a** = ago: *Je suis arrivé **il y a** 2 jours.*",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "**savoir** vs **connaître**?",
+      "back": "**savoir** = to know a **fact** or **how to**: *Je **sais** nager. Je sais qu'il est là.*\n\n**connaître** = to be familiar with a **person, place, thing**: *Je **connais** Marie. Tu connais ce film ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "What does **c'est** vs **il est** describe?",
+      "back": "**C'est** + determiner/noun or general statement: *C'est un médecin. C'est beau !*\n\n**Il/Elle est** + adjective or bare profession: *Il est médecin. Elle est grande.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you talk about the **weather**?",
+      "back": "**Il fait** + adjective: *Il fait beau / chaud / froid / mauvais*\n\n**Il** + verb: *Il pleut* (raining), *Il neige* (snowing)\n\n*Il y a du vent / du soleil.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How does **il faut** work?",
+      "back": "Impersonal “it is necessary”: always **il**.\n\n*Il faut + infinitive*: *Il faut partir.*\n*Il faut que + subjunctive*: *Il faut que tu partes.*\n*Il me faut…* = I need…",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you say *I need to / I feel like / I'm about to*?",
+      "back": "*avoir **besoin de***: *J'ai besoin de dormir.*\n*avoir **envie de***: *J'ai envie d'une glace.*\n*être **en train de*** (in the middle of): *Je suis en train de manger.*\n*être **sur le point de*** (about to): *Il est sur le point de partir.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "What is **liaison**?",
+      "back": "Pronouncing a normally silent final consonant when the next word starts with a vowel:\n\n*les‿amis* (\"lay-za-mee\"), *vous‿avez*, *un‿homme*\n\nMandatory after articles, pronouns, and short adverbs/prepositions. Forbidden after *et* and before an aspirated *h*: *les | héros*.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronunciation"
+      ]
+    },
+    {
+      "front": "Conjugate **devoir** in the present.",
+      "back": "je **dois**, tu **dois**, il **doit**, nous **devons**, vous **devez**, ils **doivent**\n\n*Je **dois** partir.* (I have to go)\n\nPast participle: **dû**.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **savoir** in the present.",
+      "back": "je **sais**, tu **sais**, il **sait**, nous **savons**, vous **savez**, ils **savent**\n\n*Je ne **sais** pas. Tu **sais** nager ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **dire** in the present.",
+      "back": "je **dis**, tu **dis**, il **dit**, nous **disons**, vous **dites**, ils **disent**\n\n**vous dites** (not *disez*) — like *vous faites, vous êtes*.\n\n*Qu'est-ce que tu **dis** ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **voir** and **croire** in the present.",
+      "back": "**voir**: vois, vois, voit, **voyons, voyez**, voient\n**croire**: crois, crois, croit, **croyons, croyez**, croient\n\nSame pattern: *i → y* in nous/vous. *On se **voit** demain ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **mettre** in the present.",
+      "back": "je **mets**, tu **mets**, il **met**, nous **mettons**, vous **mettez**, ils **mettent**\n\nMeans *put / put on / take (time)*: *Je **mets** mon manteau. On **met** une heure.*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **partir**, **sortir** and **dormir** in the present.",
+      "back": "The singular **drops the stem's last consonant**:\n**partir**: pars, pars, part, partons, partez, partent\n**sortir**: sors, sors, sort, sortons, sortez, sortent\n**dormir**: dors, dors, dort, dormons, dormez, dorment\n\nSame: *sentir, servir*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **connaître** in the present.",
+      "back": "je **connais**, tu **connais**, il **connaît**, nous **connaissons**, vous **connaissez**, ils **connaissent**\n\n*Tu **connais** Paul ?*\n\nSame: *reconnaître, paraître*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **boire** in the present.",
+      "back": "je **bois**, tu **bois**, il **boit**, nous **buvons**, vous **buvez**, ils **boivent**\n\n*Tu **bois** quoi ?* Past participle: **bu**.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Conjugate **écrire** and **lire** in the present.",
+      "back": "**écrire**: *j'écris, tu écris, il écrit, nous **écrivons**, vous **écrivez**, ils **écrivent***\n**lire**: *je lis, tu lis, il lit, nous **lisons**, vous **lisez**, ils **lisent***\n\nPast participles: *j'ai **écrit***, *j'ai **lu***.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "Which common verbs conjugate like **prendre, venir, mettre, partir, ouvrir**?",
+      "back": "Learn one, get the family:\n**prendre** → *apprendre, comprendre, surprendre*\n**venir** → *devenir, revenir, se souvenir, tenir, obtenir*\n**mettre** → *permettre, promettre, remettre*\n**partir** → *sortir, dormir, sentir, servir*\n**ouvrir** → *offrir, découvrir, souffrir*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How does **acheter** (and *se lever*) change its stem?",
+      "back": "**e → è** when the ending is silent (all forms except nous/vous):\nj'**achète**, tu achètes, il achète, nous **achetons**, vous **achetez**, ils achètent\n\nSame: *se lever, emmener, se promener*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How does **appeler** (and *jeter*) change its stem?",
+      "back": "**Double the consonant** when the ending is silent:\nj'**appelle**, tu appelles, il appelle, nous **appelons**, vous **appelez**, ils appellent\n\n*jeter → je **jette**, nous jetons*\n*Je m'**appelle** Anna.*",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How does **préférer** change its stem?",
+      "back": "**é → è** when the ending is silent:\nje **préfère**, tu préfères, il préfère, nous **préférons**, vous **préférez**, ils préfèrent\n\nSame: *espérer, répéter, s'inquiéter*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "What's special about **manger** and **commencer** in the *nous* form?",
+      "back": "Keep the soft sound before **a / o**:\n**-ger → -geons**: *nous **mangeons**, je **mangeais***\n**-cer → -çons**: *nous **commençons**, je **commençais***\n\nSame: *voyager, nager, changer, avancer, lancer*.",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "How do **-yer** verbs (payer, envoyer, essayer) change in the present?",
+      "back": "**y → i** before a silent ending:\n**envoyer**: j'**envoie**, nous **envoyons**, ils **envoient**\n*-oyer / -uyer* must change: *nettoyer → je nettoie, s'ennuyer → je m'ennuie*\n*-ayer* can go either way: *je **paie** / je **paye***",
+      "tags": [
+        "french",
+        "grammar",
+        "present"
+      ]
+    },
+    {
+      "front": "What are the **demonstrative adjectives** (this / that / these)?",
+      "back": "**ce** (m), **cet** (m before a vowel/mute h), **cette** (f), **ces** (pl)\n\n*ce livre, cet homme, cette ville, ces gens*\n\nAdd **-ci / -là** to contrast: *ce livre-**ci*** (this one) vs *ce livre-**là*** (that one).",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "What are the uses of **on**, and how does it conjugate?",
+      "back": "**on** + 3rd-person singular verb:\n1. **we** (everyday speech): *On y va ?*\n2. **people / one**: *En France, **on** mange tard.*\n3. **someone**: ***On** m'a volé mon vélo.*\n\nWhen *on* = we, adjectives often agree: *On est **contents**.* Emphatic: *Nous, **on**…*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do you say *It's mine / Whose is it?* with **être à**?",
+      "back": "**être à + person** = to belong to\n\n*C'est **à qui** ? — C'est **à moi**.*\n*Ce sac est **à Marie**.*\n\nUses stressed pronouns: *à moi, à toi, à lui…*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you say *Who are you talking **to**?* — where does the preposition go?",
+      "back": "The **preposition goes first** — never at the end like English:\n\n***À qui** tu parles ?*\n***Avec qui** tu sors ?*\n***De quoi** tu as besoin ?* (What do you need?)",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "How do you say *yes* to a **negative** question?",
+      "back": "**Si** = yes, contradicting a negative:\n\n*Tu ne viens pas ? — **Si** !* (Yes, I am!)\n*Tu n'aimes pas ça ? — **Si**, j'adore.*\n\n*Oui* here sounds wrong.",
+      "tags": [
+        "french",
+        "grammar",
+        "questions"
+      ]
+    },
+    {
+      "front": "When do you use **et un**, and when do **cent / vingt** take an *s*?",
+      "back": "**et un** for 21, 31, 41, 51, 61, 71: *vingt **et un**, soixante **et onze*** — but *quatre-vingt-un*.\n\n**cent / vingt** take **-s** only when multiplied and last: *deux cent**s***, *quatre-vingt**s*** but *deux **cent** trois*.\n**mille** never changes: *deux **mille***.",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "*lundi* vs *le lundi* — what's the difference?",
+      "back": "**lundi** = this (coming or last) Monday: *Je pars **lundi**.*\n**le lundi** = every Monday: ***Le lundi**, je fais du sport.*\n\nDays and months are lowercase and masculine.",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "Which prepositions go with **months, seasons, years**?",
+      "back": "**en** + month or year: *en mai, en 2024* (or *au mois de mai*)\n**en** été, **en** automne, **en** hiver — but **au** printemps\n**au** + century: *au XXIe siècle*\n*dans les années 80* = in the 80s",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "How do you form **ordinal numbers** (first, second…)?",
+      "back": "Add **-ième** (drop a final *e*): *deux → deux**ième**, quatre → quatr**ième***\nIrregular: **premier / première**, *cinq → cinq**u**ième*, *neuf → neu**v**ième*\n\nAbbreviated **1er / 1re, 2e, 3e**: *au 3e étage*.",
+      "tags": [
+        "french",
+        "grammar",
+        "numbers"
+      ]
+    },
+    {
+      "front": "What follows **beaucoup, un peu, assez, trop**?",
+      "back": "**adverb of quantity + de** + noun, **no article**:\n*beaucoup **de** gens, un peu **de** sucre, assez **d'**argent, trop **de** bruit*\n\nException: **la plupart des** + plural verb: *La plupart des gens **sont** d'accord.*",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "How do you say *a glass of water, a kilo of apples*?",
+      "back": "**quantity noun + de** + noun, no article:\n*un verre **d'**eau, une bouteille **de** vin, un kilo **de** pommes, une tasse **de** café, un morceau **de** pain*",
+      "tags": [
+        "french",
+        "grammar",
+        "articles"
+      ]
+    },
+    {
+      "front": "**très** vs **beaucoup**?",
+      "back": "**très** + adjective/adverb: *très bon, très vite*\n**beaucoup** + verb, or **beaucoup de** + noun: *J'aime **beaucoup**. Beaucoup de travail.*\n\nNever *très beaucoup*. Say **beaucoup trop / beaucoup plus**: *C'est **beaucoup trop** cher.*\nWith *avoir* idioms: *J'ai **très** faim.*",
+      "tags": [
+        "french",
+        "grammar",
+        "adverbs"
+      ]
+    },
+    {
+      "front": "**bon** vs **bien**?",
+      "back": "**bon** = adjective (good, tasty, OK): *un **bon** film. C'est **bon** !* (tastes good / that's fine)\n**bien** = adverb (well), or *good* about quality/behaviour: *Il parle **bien**. C'est **bien**.*\n\n*Ça sent **bon***, but *Je me sens **bien***.",
+      "tags": [
+        "french",
+        "grammar",
+        "adverbs"
+      ]
+    },
+    {
+      "front": "How does **tout** agree before a noun?",
+      "back": "**tout le** (m) · **toute la** (f) · **tous les** (m pl) · **toutes les** (f pl)\n\n*toute la journée* (all day), *tous les jours* (every day)\n*tout le monde* = everyone (singular verb: *Tout le monde **est** là.*)",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "Give some **irregular feminine** adjectives.",
+      "back": "*blanc → **blanche**, frais → **fraîche**, sec → **sèche***\n*long → **longue**, doux → **douce**, faux → **fausse***\n*gentil → **gentille**, bon → **bonne**, gros → **grosse***\n*public → **publique**, fou → **folle**, favori → **favorite***",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "**en voiture** but **à pied** — which preposition for transport?",
+      "back": "**en** = inside a vehicle: *en voiture, en train, en bus, en avion, en métro*\n**à** = on top / your own power: *à pied, à vélo, à moto, à cheval*\n\n(*en vélo* is common in speech.)",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "How do you use **chez**?",
+      "back": "**chez** + person = at/to someone's home or business:\n*chez moi* (at my place), *chez Marie, chez le médecin, chez le coiffeur*\n\n*Je rentre **chez moi**.* (I'm going home)",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "How do place words like **à côté de, en face de, près de** combine with articles?",
+      "back": "Their **de** contracts:\n*à côté **du** cinéma, en face **de la** gare, près **de l'**école, loin **des** magasins*\nAlso: *au-dessus de, au milieu de, autour de, à droite de*\n\nNo *de*: *devant, derrière, sur, sous, entre, dans*",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "How do you say *from* a country?",
+      "back": "**de** + feminine country (no article): *Je viens **de** France, **d'**Italie.* (also masc. + vowel: *d'Iran*)\n**du** + masculine: *Je viens **du** Japon.*\n**des** + plural: *Je viens **des** États-Unis.*\n\n(Mirror of *en / au / aux*.)",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "How do you say *my head hurts*?",
+      "back": "**avoir mal à** + body part (*au / à la / aux*):\n*J'ai mal **à la** tête. J'ai mal **au** dos. J'ai mal **aux** dents.*\n\n*Ça fait mal.* (It hurts)",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "**faire du**, **jouer à**, **jouer de** — which for sports, games, instruments?",
+      "back": "**faire du / de la** + sport/activity: *faire **du** vélo, **de la** natation*\n**jouer à** + game/team sport: *jouer **au** foot, **aux** cartes*\n**jouer de** + instrument: *jouer **du** piano, **de la** guitare*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "Where does an object pronoun go with **aller / pouvoir / vouloir + infinitive**?",
+      "back": "Before the **infinitive** it belongs to:\n*Je vais **le** faire. Je peux **t'**aider ? Tu dois **lui** dire.*\n\nNegative wraps the first verb: *Je **ne** vais **pas le** faire.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "Where do object pronouns go in the **passé composé**?",
+      "back": "Before the **auxiliary**:\n*Je **l'**ai vu. Je **lui** ai parlé. J'**y** suis allé. J'**en** ai mangé.*\n\n*Tu as vu le film ? — Oui, je **l'**ai vu.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "**déjà, pas encore, encore, toujours** — what do they mean?",
+      "back": "**déjà** = already / ever: *Tu as **déjà** mangé ?* → *Non, **pas encore**.* (not yet)\n**encore** = still / again / more: *Il est **encore** là. **Encore** du pain ?*\n**toujours** = always / still: *Tu habites **toujours** à Lyon ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "How do you give a command with a **reflexive verb**?",
+      "back": "Affirmative: pronoun **after**, *te → toi*: ***Lève-toi** ! **Assieds-toi** ! **Dépêchez-vous** !*\nNegative: pronoun **before**: *Ne **te** lève pas ! Ne **vous** inquiétez pas !*",
+      "tags": [
+        "french",
+        "grammar",
+        "imperative"
+      ]
+    },
+    {
+      "front": "How do you say *I wash **my** hands* / *he broke **his** leg*?",
+      "back": "**Reflexive verb + definite article**, not a possessive:\n*Je **me** lave **les** mains.*\n*Il **s'**est cassé **la** jambe.*\n*Je **me** brosse **les** dents.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do you say *each other*?",
+      "back": "A plural **reflexive** verb:\n*Ils **s'**aiment.*\n*Nous **nous** sommes rencontrés à Paris.*\n*On **s'**appelle demain ?* (We'll call each other)\n\n*On se voit !* = See you!",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "Which **imparfait** forms should you know as ready-made chunks?",
+      "back": "**c'était** (it was), **il y avait** (there was/were), **il faisait** + weather, **j'avais** (I had), **il fallait** (one had to), **je voulais** (I wanted), **je pensais que** (I thought)\n\n*C'était super ! Il y avait du monde.*\n\nFor one finished event: ***ça a été***, ***il y a eu***.",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "**an / année**, **jour / journée**, **soir / soirée** — which one when?",
+      "back": "Short form = a **point** or a **count**: *trois **ans**, deux **jours**, ce **soir***\nLong form = the **duration**, what fills it: *toute la **journée**, plusieurs **années**, Bonne **soirée** !*\n\nRule of thumb: number → short; *toute la*, *plusieurs* or wishes → long.",
+      "tags": [
+        "french",
+        "grammar",
+        "vocabulary"
+      ]
+    },
+    {
+      "front": "**partir, sortir, quitter, laisser** — all *leave*?",
+      "back": "**partir** = leave (no object; *partir **de** Paris*): *Je **pars** demain.*\n**sortir** = go out / exit: *On **sort** ce soir ?*\n**quitter** = leave a place/person (needs an object): *Je **quitte** Paris.*\n**laisser** = leave something behind / let: *J'ai **laissé** mes clés à la maison.*",
+      "tags": [
+        "french",
+        "grammar",
+        "vocabulary"
+      ]
+    },
+    {
+      "front": "**visiter** vs **rendre visite à**?",
+      "back": "**visiter** = visit a **place**: *Je **visite** Rome.*\n**rendre visite à** = visit a **person**: *Je **rends visite à** ma grand-mère.*\n\nSpoken: *aller voir* works for both: *Je vais **voir** ma mère.*",
+      "tags": [
+        "french",
+        "grammar",
+        "vocabulary"
+      ]
+    },
+    {
+      "front": "**savoir** vs **pouvoir** for *can*?",
+      "back": "**savoir** + inf = know **how** (a learned skill): *Je **sais** nager.*\n**pouvoir** + inf = be **able / allowed** now: *Je ne **peux** pas nager, j'ai mal au bras.*\n\n“Can you speak French?” → *Tu **parles** français ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "vocabulary"
+      ]
+    },
+    {
+      "front": "Which verbs take **no preposition** in French but do in English?",
+      "back": "**regarder** (look **at**), **écouter** (listen **to**), **attendre** (wait **for**), **chercher** (look **for**), **demander** (ask **for**), **payer** (pay **for**)\n\n*J'**attends** le bus → Je **l'**attends.*\n*Je **cherche** mes clés. Je **paie** le café.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "Which verbs take **à + person** where English has none?",
+      "back": "**téléphoner à, répondre à, obéir à, ressembler à, demander à, conseiller à, faire confiance à**\n\n*Je **téléphone à** ma mère → Je **lui** téléphone.*\n*Il **ressemble à** son père.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "Which verbs take a **bare infinitive** (no preposition)?",
+      "back": "**aimer, adorer, préférer, détester, vouloir, pouvoir, devoir, savoir, aller, venir, espérer, il faut**\n\n*J'**aime** lire. J'**espère** venir. Il **faut** partir.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "What form follows **pour** and **sans**?",
+      "back": "After prepositions French uses the **infinitive**, not *-ing*:\n**pour** + inf = (in order) to: *Je travaille **pour** gagner ma vie.*\n**sans** + inf = without -ing: *Il est parti **sans** dire au revoir.*\n\nOnly exception: **en** + *-ant* (*en mangeant*).\n\n⚠️ *without saying* → *sans **dire***, never *sans disant*.",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "**en** vs **dans** + a length of time?",
+      "back": "**en** = how long it **takes**: *J'ai fait le trajet **en** deux heures.*\n**dans** = **from now**, in the future: *Le train part **dans** dix minutes.*\n\n“I'll be back in 5 minutes” → *Je reviens **dans** cinq minutes.*",
+      "tags": [
+        "french",
+        "grammar",
+        "prepositions"
+      ]
+    },
+    {
+      "front": "*You mustn't* vs *you don't have to*?",
+      "back": "***Il ne faut pas*** / ***Tu ne dois pas*** = you **mustn't**: *Il ne faut pas fumer ici.*\n\n“Don't have to” → ***Tu n'es pas obligé de*** or ***Tu n'as pas besoin de***: *Tu n'es pas obligé de venir.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "**ce, ça, cela, ceci** — what's the difference?",
+      "back": "**ce** before *être*: *C'est bon. Ce sont mes amis.*\n**ça** = this/that/it elsewhere (spoken): ***Ça** va ? **Ça** coûte cher. J'aime **ça**.*\n**cela** = written/formal *ça*; **ceci** = this (formal)",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What's the **order** of object pronouns before the verb?",
+      "back": "**me/te/se/nous/vous → le/la/les → lui/leur → y → en**\n\n*Il **me le** donne. Je **le lui** donne. Il **y en** a.*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do **relative pronouns qui / que / où / dont** work?",
+      "back": "**qui** = subject: *L'homme **qui** parle*.\n**que** = object: *Le livre **que** je lis*.\n**où** = where/when: *La ville **où** j'habite*.\n**dont** = of which/whose (replaces *de*): *Le film **dont** je parle*.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do you form the **plus-que-parfait** (had done)?",
+      "back": "**imparfait of avoir/être + past participle**\n\n*J'**avais** déjà **mangé** quand il est arrivé.*\n(I had already eaten when he arrived.)",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do you form the **futur simple**?",
+      "back": "**Infinitive + -ai, -as, -a, -ons, -ez, -ont** (drop the final *e* of -re verbs)\n\n*je parler**ai**, tu finir**as**, il prendr**a***",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "What are the irregular **future stems**?",
+      "back": "être → **ser-**, avoir → **aur-**, aller → **ir-**, faire → **fer-**, pouvoir → **pourr-**, vouloir → **voudr-**, venir → **viendr-**, voir → **verr-**, savoir → **saur-**, devoir → **devr-**, falloir → **faudr-**\n\n*Je serai là. J'aurai le temps. On ira à Paris. Il fera beau. Tu pourras venir ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How do you form the **conditionnel présent** (would)?",
+      "back": "**Future stem + imparfait endings** (-ais, -ais, -ait, -ions, -iez, -aient)\n\n*Je **voudrais** un café. J'**aimerais** voyager. Tu **pourrais** m'aider ?*\n\nAlso the polite way to ask for things.",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How do **si clauses** work?",
+      "back": "**si + present → present/future/imperative**: *Si tu viens, on **ira** au parc.*\n\n**si + imparfait → conditionnel**: *Si j'**avais** de l'argent, j'**achèterais** une maison.*\n\n**si + plus-que-parfait → conditionnel passé**: *Si j'avais su, je **serais venu**.*\n\nNever *si + future/conditional*.",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How do you form the **subjonctif présent**?",
+      "back": "Take **ils** present form, drop **-ent**, add **-e, -es, -e, -ions, -iez, -ent**\n\n*ils finissent → que je finiss**e***",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "When do you use the **subjunctive**?",
+      "back": "After **que** with expressions of:\n- **wish/will**: *Je veux que tu **viennes**.*\n- **necessity**: *Il faut que je **parte**.*\n- **emotion**: *Je suis content que tu **sois** là.*\n- **doubt**: *Je doute qu'il **ait** raison.*\n- conjunctions: *bien que, pour que, avant que, à moins que*",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "Give the subjunctive of **être, avoir, aller, faire**.",
+      "back": "**être**: *que je sois, que tu sois, qu'il soit, que nous soyons, que vous soyez, qu'ils soient*\n**avoir**: *que j'aie, que tu aies, qu'il ait, que nous ayons, que vous ayez, qu'ils aient*\n**aller**: *que j'aille, que nous allions, qu'ils aillent*\n**faire**: *que je fasse, que nous fassions, qu'ils fassent*",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "Where do pronouns go in an **affirmative imperative** vs a negative one?",
+      "back": "Affirmative: **after**, with hyphen, *me → moi*: *Donne-**moi** ça. Dis-**le**-moi.*\n\nNegative: **before**, normal order: *Ne **me** le dis pas.*",
+      "tags": [
+        "french",
+        "grammar",
+        "imperative"
+      ]
+    },
+    {
+      "front": "How is **tout / tous** used as a pronoun?",
+      "back": "**tout** = everything: ***Tout** va bien. J'ai **tout** compris.*\n**tous / toutes** = all of them, after the verb: *Ils sont **tous** là.*\n\nPronoun **tous** pronounces its **s** (\"touss\"); *tous les jours* doesn't.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "Word order for a **negative passé composé with a pronoun**?",
+      "back": "**ne + pronoun(s) + auxiliary + pas + participle**\n\n*Je **ne l'ai pas** vu.*\n*Il **ne m'a pas** répondu.*\n*Je **ne lui en ai pas** parlé.*",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "How do you negate an **infinitive**?",
+      "back": "Both parts go **together before** the infinitive:\n*Je préfère **ne pas** savoir.*\n*Essaie de **ne pas** tomber.*\n*Ne pas fumer.* (No smoking)\n*J'ai décidé de **ne rien** dire.*",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "How do you say *Nobody came* / *Nothing works*?",
+      "back": "**Personne / Rien** as subject come **first**, with **ne** but no *pas*:\n***Personne n'**est venu.*\n***Rien ne** marche.*\n\nAs one-word answers: *Qui est là ? — **Personne**. Tu veux quoi ? — **Rien**.*",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "Where does **personne** go in the passé composé (vs *rien*)?",
+      "back": "**rien / jamais / plus** go before the participle: *Je n'ai **rien** vu.*\n**personne** goes **after** it: *Je n'ai vu **personne**.*\n**aucun** and **que** also go after: *Je n'ai eu **aucun** problème. Je n'ai mangé **qu'**une pomme.*",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "How do you use **ne … aucun(e)**?",
+      "back": "**ne … aucun(e)** + singular noun = no / not a single:\n*Je **n'**ai **aucune** idée.*\n*Il **n'**y a **aucun** problème.*\n\nAlone: ***Aucun** problème !* Agrees with the noun's gender.",
+      "tags": [
+        "french",
+        "grammar",
+        "negation"
+      ]
+    },
+    {
+      "front": "How do you answer *Do you have any kids?* — *I have two*?",
+      "back": "With a number or quantity, **en** is required and the number stays:\n*Oui, j'**en** ai **deux**.*\n*Il y **en** a **beaucoup**.*\n*J'**en** veux **un peu**.*\n\nEnglish drops “of them”; French can't drop **en**.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the everyday expressions with **y**?",
+      "back": "*On **y** va !* (Let's go)\n*Vas-**y** !* (Go ahead!)\n*Ça **y** est !* (That's it! / Done!)\n*J'**y** vais.* (I'm off)\n*Je n'**y** arrive pas.* (I can't manage it)\n*Je n'**y** peux rien.* (There's nothing I can do)",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the everyday expressions with **en**?",
+      "back": "*Je m'**en** vais. / Va-t'**en** !* (I'm leaving / Go away!)\n*J'**en** ai marre.* (I'm fed up)\n*Je m'**en** fiche.* (I don't care)\n*Ne t'**en** fais pas.* (Don't worry)\n*Je n'**en** peux plus.* (I can't take it anymore)",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the irregular imperatives of **être, avoir, savoir, vouloir**?",
+      "back": "**être**: sois, soyons, soyez — *Sois sage !*\n**avoir**: aie, ayons, ayez — *N'aie pas peur !*\n**savoir**: sache, sachons, sachez\n**vouloir**: **veuillez** + inf (formal *please*) — *Veuillez patienter.*",
+      "tags": [
+        "french",
+        "grammar",
+        "imperative"
+      ]
+    },
+    {
+      "front": "Why ***Vas-y*** but ***Va là-bas***?",
+      "back": "*-er* verbs and *aller* drop the *-s* in the *tu* imperative, but **put it back before y / en** (for liaison):\n***Vas-y** ! **Manges-en** ! **Penses-y** !*\n\nCompare: *Va là-bas ! Mange !*",
+      "tags": [
+        "french",
+        "grammar",
+        "imperative"
+      ]
+    },
+    {
+      "front": "Which common **reflexive verbs** have meanings you can't guess?",
+      "back": "**s'appeler** (be named), **se rendre compte (de)** (realize), **se souvenir de** (remember), **s'occuper de** (take care of), **se tromper** (be wrong), **s'entendre avec** (get along with), **se passer** (happen), **s'en aller** (leave)\n\n*Qu'est-ce qui **se passe** ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "More irregular past participles: **connaître, savoir, devoir, croire, recevoir, vivre…**?",
+      "back": "*connaître → **connu**, savoir → **su**, devoir → **dû**, croire → **cru**, recevoir → **reçu**, vivre → **vécu**, courir → **couru**, plaire/pleuvoir → **plu**, tenir → **tenu**, naître → **né**, mourir → **mort**, s'asseoir → **assis***",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "Where do adverbs go in the **passé composé**?",
+      "back": "Short adverbs go **between** auxiliary and participle:\n*J'ai **bien** dormi. Il a **déjà** mangé. J'ai **beaucoup** aimé. Tu as **trop** bu.*\n\nTime/place words and most *-ment* adverbs go **after**: *Il est arrivé **hier**. Elle a parlé **lentement**.*",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "Why ***Elle est montée*** but ***Elle a monté les valises***?",
+      "back": "*monter, descendre, sortir, rentrer, passer, retourner* take **avoir** when they have a **direct object**:\n*Elle **est** montée.* (She went up)\n*Elle **a** monté **les valises**.* (She took the suitcases up)\n*J'**ai** sorti **le chien**. J'**ai** passé **une semaine** à Rome.*",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "**amener, emmener, apporter, emporter**?",
+      "back": "People/animals (*mener*): **amener** = bring along, **emmener** = take away\nThings you carry (*porter*): **apporter** = bring, **emporter** = take away\n\n*J'**emmène** les enfants à l'école. J'**apporte** du vin.*\n*Sur place ou à **emporter** ?* (eat in or take away?)",
+      "tags": [
+        "french",
+        "grammar",
+        "vocabulary"
+      ]
+    },
+    {
+      "front": "How do you say *I miss you* with **manquer**?",
+      "back": "**manquer à** works **backwards**: the thing missed is the subject.\n\n*Tu **me** manques.* = I miss you\n*Paris **lui** manque.* = He/She misses Paris.\n*Mes amis **me** manquent.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How does **plaire** work?",
+      "back": "**plaire à** = to please → the thing liked is the **subject**:\n*Ça **me** plaît.* = I like it\n*Ce film **leur** a plu.* = They liked this film\n*Elle **lui** plaît.* = He/She fancies her\n\n*s'il te / vous **plaît*** = if it pleases you.",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "Which common verbs take **à + infinitive**?",
+      "back": "**commencer à, apprendre à, aider à, réussir à, arriver à** (manage to), **continuer à, hésiter à, s'habituer à**\n\n*J'**apprends à** conduire. Tu peux m'**aider à** porter ça ? Je n'**arrive** pas **à** dormir.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "Which common verbs take **de + infinitive**?",
+      "back": "**essayer de, décider de, oublier de, finir de, arrêter de, refuser de, choisir de, accepter de, se dépêcher de**, and **avoir besoin / envie / peur de**\n\n*J'ai **oublié de** fermer la porte. **Arrête de** crier !*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How do you say *I asked him **to** come*?",
+      "back": "**verb + à + person + de + infinitive**:\n**demander, dire, conseiller, permettre, proposer** à quelqu'un **de** faire\n\n*Je **lui** ai **demandé de** venir.*\n*Dis **à** Paul **de** m'appeler.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "**penser à** vs **penser de**?",
+      "back": "**penser à** = think **about**: *Je **pense à** toi.* Things → *y*: *J'**y** pense.* People → stressed pronoun: *Je pense **à lui**.*\n\n**penser de** = have an **opinion** of (in questions): *Qu'est-ce que tu **penses de** ce film ?* → *Qu'est-ce que tu **en** penses ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How do you say *before leaving* / *after eating*?",
+      "back": "**avant de** + infinitive: ***Avant de** partir, ferme la porte.*\n**après** + **past infinitive** (*avoir/être* + participle): ***Après avoir mangé**, on est sortis.*\n\nOnly when both verbs have the same subject.",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you say *something to drink* / *work to do*?",
+      "back": "**à + infinitive** after a noun or indefinite:\n*J'ai du travail **à faire**.*\n*Il n'y a rien **à manger**.*\n*maison **à vendre**, quelque chose **à boire***",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "Give three ways to say *I've been waiting for an hour* (still waiting).",
+      "back": "All use the **present**:\n*J'attends **depuis** une heure.*\n***Ça fait** une heure **que** j'attends.* (very spoken)\n***Il y a** une heure **que** j'attends.*\n\nAsk: *Depuis **combien de temps** … ? / Depuis **quand** … ?*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "Which tense after **quand** when talking about the future?",
+      "back": "The **future** (English uses the present):\n***Quand** tu **arriveras**, appelle-moi.*\n*Je te le dirai **dès que** je le **saurai**.*\n\nSame with *lorsque, dès que, aussitôt que* — but **si** + present: *Si tu viens…*",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How do you say *I was going to / I was about to*?",
+      "back": "**aller (imparfait) + infinitive**:\n*J'**allais** t'appeler !* (I was just about to call you!)\n*On **allait** partir quand il a commencé à pleuvoir.*",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "What are the four meanings of **devoir**?",
+      "back": "1. **must / have to**: *Je **dois** travailler.*\n2. **supposed to**: *Il **doit** arriver à 8 h.*\n3. **must (probably)**: *Il **doit** être fatigué.*\n4. **to owe**: *Je te **dois** 10 euros.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How do you say *it's better to / you'd better*?",
+      "back": "**il vaut mieux**:\n+ infinitive: ***Il vaut mieux** partir tôt.*\n+ **que** + subjunctive: ***Il vaut mieux que** tu restes.*\n\nSofter: ***Il vaudrait mieux***…",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you say *to pick someone up* / *go get*?",
+      "back": "**aller / venir chercher**:\n*Je **vais chercher** le pain.*\n*Tu **viens me chercher** à la gare ?*\n\nAlso **passer prendre**: *Je **passe te prendre** à 8 h.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you suggest *How about…? / Shall we…?*",
+      "back": "**Si on + imparfait ?**\n\n***Si on allait** au cinéma ?*\n***Et si on commandait** une pizza ?*\n\nVery common, friendly way to suggest something.",
+      "tags": [
+        "french",
+        "grammar",
+        "spoken"
+      ]
+    },
+    {
+      "front": "What do ***Ça te dit ?*** and ***Ça te va ?*** mean?",
+      "back": "***Ça te dit de*** + inf ? = Do you fancy…? *Ça te dit d'aller boire un verre ?*\n***Ça ne me dit rien*** = doesn't appeal / doesn't ring a bell\n***Ça te va ?*** = Is that OK with you? → ***Ça me va.***\n***Ça te va bien*** = it suits you",
+      "tags": [
+        "french",
+        "grammar",
+        "spoken"
+      ]
+    },
+    {
+      "front": "What does casual French sound like: **t'as, y a, chais pas**?",
+      "back": "Sounds get swallowed:\n*tu as → **t'as***, *tu es → **t'es***\n*il y a → **y a***\n*je ne sais pas → **j'sais pas** → **chais pas***\n*il vient → **i' vient***, *oui → **ouais***\n\nRecognize them; you don't have to produce them.",
+      "tags": [
+        "french",
+        "grammar",
+        "spoken"
+      ]
+    },
+    {
+      "front": "How do you emphasize with **c'est … qui / que**?",
+      "back": "**C'est … qui** highlights the **subject**; **C'est … que** anything else:\n***C'est moi qui** ai payé.* (“I” paid)\n***C'est demain qu'**on part.*\n***C'est à toi que** je parle !*\n\nThe verb agrees with the pronoun: *c'est **toi** qui **as**…*",
+      "tags": [
+        "french",
+        "grammar",
+        "spoken"
+      ]
+    },
+    {
+      "front": "What is **dislocation** (*Moi, je… / Ce film, je l'ai vu*)?",
+      "back": "Spoken French pulls a word out and repeats it with a pronoun:\n***Moi, je** pense que…*\n***Ce film, je l'**ai vu.*\n***Ton frère, il** est où ?*\n*Il est sympa, **ton frère**.*\n\nExtremely common — learn to hear it.",
+      "tags": [
+        "french",
+        "grammar",
+        "spoken"
+      ]
+    },
+    {
+      "front": "How do you say *Someone's knocking* with **il y a … qui**?",
+      "back": "**Il y a + noun + qui** introduces something new:\n***Il y a quelqu'un qui** frappe.*\n***Il y a** ma sœur **qui** arrive.*\n\nAlso **J'ai + noun + qui**: *J'ai un ami **qui** habite à Lyon.*",
+      "tags": [
+        "french",
+        "grammar",
+        "spoken"
+      ]
+    },
+    {
+      "front": "What are the **demonstrative pronouns** (the one / this one)?",
+      "back": "**celui** (m), **celle** (f), **ceux** (m pl), **celles** (f pl) — never alone:\n+ **-ci / -là**: *Je prends **celui-ci**.*\n+ **de**: *C'est **celle de** Marie.* (Marie's)\n+ **qui / que**: ***Ceux qui** veulent venir…*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What are the **possessive pronouns** (mine, yours…)?",
+      "back": "Agree with the **thing owned**:\n**le mien / la mienne / les miens / les miennes** (mine)\n**le tien…** (yours), **le sien…** (his/hers)\n**le nôtre / la nôtre / les nôtres**, **le vôtre…**, **le leur / les leurs**\n\n*C'est **le mien**. À **la tienne** !* (Cheers!)",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "How do you say *something interesting* / *nothing serious*?",
+      "back": "**quelque chose, rien, quelqu'un, personne** + **de** + masculine adjective:\n*quelque chose **d'**intéressant, rien **de** grave, quelqu'un **de** sympa, personne **d'**autre*\n\nAlso **quelque part** = somewhere.",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "**chaque, chacun, plusieurs, quelques, certains**?",
+      "back": "**chaque** + singular noun = each: ***chaque** jour*\n**chacun(e)** = each one: ***Chacun** paie sa part.*\n**plusieurs** = several: ***plusieurs** fois*\n**quelques** = a few: ***quelques** amis*\n**certain(e)s** = some (not all): ***Certains** pensent que…*",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "What does **n'importe** + question word mean?",
+      "back": "*any… at all*:\n**n'importe qui** (anyone), **n'importe quoi** (anything / nonsense), **n'importe où** (anywhere), **n'importe quand** (anytime), **n'importe comment** (any old way)\n\n*Tu dis **n'importe quoi** !* (You're talking nonsense!)",
+      "tags": [
+        "french",
+        "grammar",
+        "pronouns"
+      ]
+    },
+    {
+      "front": "*la semaine dernière* vs *la dernière semaine*?",
+      "back": "**After** the noun = relative to **now**: *la semaine **dernière**, l'an **prochain**, lundi **prochain***\n**Before** the noun = in a **series**: *la **dernière** semaine des vacances, le **prochain** train*",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "How do you compare **quantities** (more money, as many friends)?",
+      "back": "**plus de / moins de / autant de** + noun (+ *que*):\n*J'ai **plus de** temps **que** toi. Il a **autant d'**amis que moi.*\nWith verbs: **autant que**: *Il travaille **autant que** moi.*\nWith numbers: ***plus de** 10 personnes* (not *que*)",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "**parce que, car, puisque, comme** — all *because*?",
+      "back": "**parce que** = because (answers *pourquoi*)\n**car** = for (written; never first)\n**puisque** = since (reason already known): ***Puisque** tu es là, aide-moi.*\n**comme** = as/since, at the **start**: ***Comme** il pleuvait, on est restés.*\n**à cause de** / **grâce à** + noun = because of (bad / good)",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "**donc, alors, du coup, pourtant, quand même**?",
+      "back": "**donc** = so / therefore\n**alors** = so / then: *Alors, on y va ?*\n**du coup** = so / as a result (very spoken)\n**pourtant** = and yet\n**quand même** = still / anyway / really: *C'est **quand même** cher.*",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "How do you give **advice** with the conditional?",
+      "back": "***Tu devrais*** + inf = you should: *Tu devrais te reposer.*\n***Il faudrait*** + inf = one ought to\n***Tu ferais mieux de*** = you'd better\n***À ta place, j'irais*** voir un médecin. (If I were you…)\n***Ce serait bien de*** + inf = it would be nice to",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How do you form the **conditionnel passé** (*should have, could have*)?",
+      "back": "**conditional of avoir/être + past participle**:\n*J'**aurais dû** te le dire.* (I should have)\n*Tu **aurais pu** m'appeler !* (You could have)\n*J'**aurais aimé** venir.* (I would have liked to)\n*Elle **serait venue**.*",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "Subjunctive of **pouvoir, savoir, vouloir**?",
+      "back": "**pouvoir**: puisse, puisses, puisse, puissions, puissiez, puissent\n**savoir**: sache, saches, sache, sachions, sachiez, sachent\n**vouloir**: veuille, veuilles, veuille, voulions, vouliez, veuillent\n\n*Je veux qu'il le **sache**.*",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "Why *que je **vienne*** but *que nous **venions***?",
+      "back": "Two-stem verbs keep both: **nous/vous** use the *nous* stem.\n**venir**: vienne / venions\n**prendre**: prenne / prenions\n**boire**: boive / buvions\n**devoir**: doive / devions\n\nSame with *voir, croire, recevoir*.",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "Which common expressions do **not** take the subjunctive?",
+      "back": "These take the **indicative**:\n**espérer que**: *J'espère qu'il **viendra**.*\n**penser / croire que** (affirmative): *Je pense qu'il **est** là.*\n**il est sûr / probable que, parce que, pendant que, si**\n**après que** (indicative in good usage, though the subjunctive is common)",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "*Je pense qu'il **a** raison* vs *Je ne pense pas qu'il **ait** raison*?",
+      "back": "**penser / croire que**:\naffirmative → **indicative**: *Je pense qu'il **a** raison.*\nnegative or inverted question → **subjunctive**: *Je ne pense pas qu'il **ait** raison. Crois-tu qu'il **soit** là ?*\n\nCasual speech sometimes uses the indicative anyway.",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "How do you **avoid** the subjunctive?",
+      "back": "Same subject → **infinitive**; different subject → **que + subjunctive**:\n*Je veux **partir**.* / *Je veux **que tu partes**.*\n***pour** venir* / ***pour que** tu viennes*\n***avant de** partir* / ***avant que** tu partes*\n***sans** rien dire* / ***sans qu'**il le sache*",
+      "tags": [
+        "french",
+        "grammar",
+        "subjunctive"
+      ]
+    },
+    {
+      "front": "How do you form the **gérondif** (*en + -ant*)?",
+      "back": "**en** + *nous* stem + **-ant**:\n*mangeons → **en mangeant**, finissons → **en finissant**, faisons → **en faisant***\nIrregular: **en étant, en ayant, en sachant**\n\nNever changes form.",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "What does the **gérondif** express?",
+      "back": "Same subject as the main verb:\n**while**: *Je chante **en me douchant**.*\n**by / how**: *On apprend **en pratiquant**.*\n**on / upon**: ***En arrivant**, j'ai vu Paul.*\n**tout en** = while (contrast): *Il travaille **tout en** étudiant.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How do you form the **passive voice**?",
+      "back": "**être + past participle (+ par)**; the participle agrees with the subject:\n*La maison **a été construite** en 1900.*\n*Le voleur **a été arrêté par** la police.*\n\nLess common than in English — French often prefers *on*.",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How does French avoid the passive?",
+      "back": "**on** + active verb: ***On** m'a volé mon portefeuille.* (My wallet was stolen)\n***On** parle français ici.* (French is spoken here)\n\n**se** + verb for general rules: *Ça ne **se fait** pas. Ça **se dit** ? Le vin blanc **se boit** frais.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How does **laisser + infinitive** work?",
+      "back": "= let someone do:\n***Laisse-moi** faire.* (Let me do it)\n*Il ne me **laisse** pas **parler**.*\n***Laisse tomber !*** (Forget it!)\n\n***Laisse-moi tranquille !*** = Leave me alone.",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "Which adjectives **change meaning** before vs after the noun?",
+      "back": "Before = figurative, after = literal:\n*mon **ancien** prof* (former) / *un meuble **ancien*** (antique)\n*ma **chère** amie* (dear) / *un hôtel **cher*** (expensive)\n*ma **propre** voiture* (own) / *une voiture **propre*** (clean)\n*un **grand** homme* (great) / *un homme **grand*** (tall)",
+      "tags": [
+        "french",
+        "grammar",
+        "adjectives"
+      ]
+    },
+    {
+      "front": "*Il est difficile **de**…* vs *C'est difficile **à**…*?",
+      "back": "**Il est / C'est** + adj + **de** + inf introduces the idea: *Il est difficile **d'**apprendre le chinois.* (spoken: *C'est difficile de…*)\n**C'est** + adj + **à** + inf refers back to something: *Le chinois ? C'est difficile **à** apprendre.*\n\nTest: nothing after the infinitive → **à**.",
+      "tags": [
+        "french",
+        "grammar",
+        "structures"
+      ]
+    },
+    {
+      "front": "When does the past participle agree with **avoir**?",
+      "back": "With a **direct object placed before** it:\n*Les clés ? Je **les** ai trouvé**es**.*\n*La lettre **que** j'ai écrit**e**.*\n*Quelle robe as-tu achet**ée** ?*\n\nNo agreement with *en*. Usually silent — audible in *écrite, mise, prise, faite*.",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do **reflexive verbs** agree in the passé composé?",
+      "back": "Agree with the reflexive pronoun **if it's the direct object**:\n*Elle **s'**est lavé**e**.*\n*Elle s'est lavé **les mains**.* (object = *les mains*: no agreement)\n*Ils se sont **parlé**.* (*parler à* = indirect: no agreement)",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "*Je devais* vs *J'ai dû*, *je savais* vs *j'ai su*?",
+      "back": "Imparfait = state/intention; passé composé = what happened:\n*Je **devais** partir.* (was supposed to) / *J'**ai dû** partir.* (had to — and did)\n*Je **pouvais**…* (was able) / *J'**ai pu**…* (managed to)\n*Je **savais**.* (knew) / *J'**ai su**.* (found out)\n*Je **connaissais** Paul.* (knew) / *J'**ai connu** Paul en 2010.* (met)",
+      "tags": [
+        "french",
+        "grammar",
+        "past"
+      ]
+    },
+    {
+      "front": "How do you form the **futur antérieur** (*will have done*)?",
+      "back": "**future of avoir/être + past participle**:\n*Quand j'**aurai fini**, je t'appellerai.*\n*Dès qu'il **sera arrivé**, on mangera.*\n\nFor an action finished before another future one.",
+      "tags": [
+        "french",
+        "grammar",
+        "future"
+      ]
+    },
+    {
+      "front": "How does **faire + infinitive** (causative) work?",
+      "back": "= have something done / make someone do:\n*Je **fais réparer** ma voiture.* (I'm having my car repaired)\n*Il me **fait rire**.* (He makes me laugh)\n\nPronouns go before *faire*: *Je **la** fais réparer.* *Fait* never agrees: *Je l'ai **fait** réparer.*",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    },
+    {
+      "front": "How do you say *I got my hair cut*?",
+      "back": "**se faire + infinitive** = have something done to yourself:\n*Je me suis **fait couper** les cheveux.*\n*Il s'est **fait voler** son téléphone.* (He got his phone stolen)\n*Tu vas **te faire** gronder !* (You'll get told off!)",
+      "tags": [
+        "french",
+        "grammar",
+        "verbs"
+      ]
+    }
+  ]
+}
