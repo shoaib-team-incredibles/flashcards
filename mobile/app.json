@@ -9,9 +9,9 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.react.recall",
+      "bundleIdentifier": "com.knowdeck",
       "supportsTablet": true,
-      "appleTeamId": "L74RPA45XF",
+      "appleTeamId": "SU2F5PR6RH",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
