@@ -1,5 +1,5 @@
 /**
- * Shared French-deck logic for the web and iOS apps. Copied verbatim to mobile/src/lib/ —
+ * Shared bundled-deck logic (French and English) for the web and iOS apps. Copied verbatim to mobile/src/lib/ —
  * edit here and re-run `node mobile/scripts/sync-french.mjs`.
  */
 
@@ -39,6 +39,14 @@ export const FRENCH_META: FrenchDeckMeta[] = [
   },
 ]
 
+/** The bundled English deck (decks/english-vocab.json). Installed like the French decks, with fixed ids. */
+export const ENGLISH_META = {
+  id: 'english-vocab',
+  name: 'English — Vocabulary',
+  description: 'Rich, uncommon words, each with a plain-English meaning, an example and a memory hook.',
+  color: '#0d9488',
+}
+
 /** FNV-1a, base36 — short, stable ids from text. */
 function hash(s: string) {
   let h = 0x811c9dc5
@@ -54,7 +62,10 @@ function hash(s: string) {
  * produces the same records and sync merges them instead of duplicating.
  */
 export const frenchDeckId = (key: FrenchDeckMeta['key']) => `french-${key}`
-export const frenchCardId = (key: FrenchDeckMeta['key'], c: BundledCard) => `french-${key}-${hash((c.aliases?.[0] ?? c.front).trim())}`
+export const frenchCardId = (key: FrenchDeckMeta['key'], c: BundledCard) => bundledCardId(frenchDeckId(key), c)
+
+/** A bundled card's fixed id within its deck: the deck id plus a hash of its first front. */
+export const bundledCardId = (deckId: string, c: BundledCard) => `${deckId}-${hash((c.aliases?.[0] ?? c.front).trim())}`
 
 type Have = { id: string; front: string; back: string }
 
@@ -63,12 +74,17 @@ type Have = { id: string; front: string; back: string }
  * corrected or extended since install (matched by id, front, or a former front).
  */
 export function diffDeck(key: FrenchDeckMeta['key'], cards: BundledCard[], have: Have[]) {
+  return diffBundled(frenchDeckId(key), cards, have)
+}
+
+/** Same as diffDeck, for any bundled deck (French or English) identified by its fixed deck id. */
+export function diffBundled(deckId: string, cards: BundledCard[], have: Have[]) {
   const byId = new Map(have.map((c) => [c.id, c]))
   const byFront = new Map(have.map((c) => [c.front, c]))
   const add: (BundledCard & { id: string })[] = []
   const update: { id: string; front: string; back: string }[] = []
   for (const b of cards) {
-    const id = frenchCardId(key, b)
+    const id = bundledCardId(deckId, b)
     const front = b.front.trim()
     const back = b.back.trim()
     const mine = byId.get(id) ?? byFront.get(front) ?? b.aliases?.map((a) => byFront.get(a.trim())).find(Boolean)

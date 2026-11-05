@@ -5,6 +5,7 @@ import { Layout } from './components/Layout'
 import { ToastProvider } from './components/toast'
 import { useTheme } from './lib/hooks'
 import { Dashboard } from './pages/Dashboard'
+import { English } from './pages/English'
 import { DeckPage } from './pages/DeckPage'
 import { Import } from './pages/Import'
 import { SettingsPage } from './pages/Settings'
@@ -30,6 +31,7 @@ function App() {
             <Route path="/deck/:id" element={<DeckPage />} />
             <Route path="/test" element={<TestSetup />} />
             <Route path="/french" element={<Suspense fallback={<div className="h-64" />}><French /></Suspense>} />
+            <Route path="/english" element={<English />} />
             <Route path="/import" element={<Import />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="/settings" element={<SettingsPage />} />

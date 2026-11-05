@@ -26,6 +26,7 @@ export default function Decks() {
       />
       <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={styles.content}>
         <FrenchBanner />
+        <EnglishBanner />
         {summaries.length === 0 ? (
           <EmptyState
             icon="rectangle.stack"
@@ -63,6 +64,23 @@ function FrenchBanner() {
       <View style={{ flex: 1 }}>
         <Text style={{ color: c.fg, fontSize: 17, fontWeight: '600' }}>Learn French</Text>
         <Text style={{ color: c.muted, fontSize: 13 }}>1,000 words · 200 expressions · grammar · audio</Text>
+      </View>
+      <Icon name="chevron.right" size={14} color={c.faint} />
+    </PressableScale>
+  );
+}
+
+/** Entry to the ready-made English vocabulary deck. */
+function EnglishBanner() {
+  const c = useColors();
+  return (
+    <PressableScale onPress={() => router.push('/decks/english')} style={[styles.banner, { backgroundColor: c.surface }]} accessibilityLabel="English: vocabulary deck">
+      <View style={[styles.flag, { backgroundColor: '#0d9488', alignItems: 'center', justifyContent: 'center' }]}>
+        <Icon name="book.fill" size={16} color="#fff" />
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={{ color: c.fg, fontSize: 17, fontWeight: '600' }}>English vocabulary</Text>
+        <Text style={{ color: c.muted, fontSize: 13 }}>Rich, uncommon words with examples</Text>
       </View>
       <Icon name="chevron.right" size={14} color={c.faint} />
     </PressableScale>

@@ -1,4 +1,4 @@
-import { BarChart3, ClipboardCheck, Home, Languages, Layers, Plus, Search, Settings, Upload } from 'lucide-react'
+import { BarChart3, BookA, ClipboardCheck, Home, Languages, Layers, Plus, Search, Settings, Upload } from 'lucide-react'
 import { createContext, useContext, useState, type ReactNode } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useDeckSummaries, useHotkeys } from '../lib/hooks'
@@ -21,6 +21,7 @@ const NAV = [
   { to: '/study', label: 'Study', icon: Layers },
   { to: '/test', label: 'Test', icon: ClipboardCheck },
   { to: '/french', label: 'French', icon: Languages },
+  { to: '/english', label: 'English', icon: BookA },
   { to: '/import', label: 'Import', icon: Upload },
   { to: '/stats', label: 'Stats', icon: BarChart3 },
 ]
@@ -143,7 +144,7 @@ export function Layout() {
         </main>
 
         {/* Mobile bottom nav */}
-        <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-6 border-t border-line bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
+        <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-7 border-t border-line bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
