@@ -89,10 +89,13 @@ export async function setDailyQuote(on: boolean): Promise<boolean> {
 }
 
 /** Send a random quote a few seconds from now, to preview the notification. */
-export async function sendQuoteNow(): Promise<'sent' | 'no-quotes' | 'denied'> {
+export async function sendQuoteNow(): Promise<'sent' | 'no-quotes' | 'denied' | 'hidden'> {
   const [q] = shuffledRun(notifiable(), 1);
   if (!q) return 'no-quotes';
   if (!(await requestPermission())) return 'denied';
+  // Allowed, but the user turned off banners/alerts for KnowDeck in Settings.
+  const { ios } = await Notifications.getPermissionsAsync();
+  if (ios && ios.allowsAlert === false) return 'hidden';
   await Notifications.scheduleNotificationAsync({
     content: { ...content(q), title: 'A quote for you', data: { kind: 'quote-preview', quoteId: q.id } },
     trigger: { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds: 3 },

@@ -37,7 +37,12 @@ export default function Quotes() {
   const preview = async () => {
     const res = await sendQuoteNow();
     if (res === 'denied') Alert.alert('Notifications are off', 'Allow notifications for KnowDeck in the Settings app to get quotes.');
-    else if (res === 'sent') haptic.success();
+    else if (res === 'hidden') Alert.alert('Banners are off', 'KnowDeck can send notifications, but alerts are turned off. Turn on Lock Screen, Notification Center or Banners for KnowDeck in Settings → Notifications.');
+    else if (res === 'no-quotes') Alert.alert('No short quotes yet', `Only quotes of ${NOTIFICATION_MAX_CHARS} characters or less are sent as notifications. Add one and try again.`);
+    else {
+      haptic.success();
+      Alert.alert('On its way', 'Your quote arrives in a few seconds. If it doesn’t, check that Focus or Do Not Disturb isn’t silencing KnowDeck.');
+    }
   };
 
   const time = new Date(2000, 0, 1, Math.floor(prefs.dailyQuoteTime / 60), prefs.dailyQuoteTime % 60);
