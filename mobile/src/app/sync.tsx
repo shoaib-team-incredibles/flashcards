@@ -51,7 +51,7 @@ export default function SyncSignIn() {
   return (
     <>
       <Stack.Screen options={{ title: 'Sync', headerLeft: () => <HeaderText label="Cancel" onPress={() => router.back()} /> }} />
-      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={{ backgroundColor: c.bg }} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <View style={[styles.badge, { backgroundColor: c.accent + '1A' }]}>
           <Icon name="arrow.triangle.2.circlepath.icloud.fill" size={34} color={c.accent} />
         </View>

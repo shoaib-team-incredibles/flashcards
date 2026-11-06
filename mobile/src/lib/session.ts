@@ -135,6 +135,29 @@ export function pickNext(q: DeckQueue, counter: number, now = Date.now()): Card 
   return null;
 }
 
+function shuffled<T>(items: T[]): T[] {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/**
+ * Shuffle review and new cards, or put them back in their usual order
+ * (reviews by due date, new cards as added). Learning cards always stay in
+ * due order: their short steps are timed, so shuffling them would break that.
+ */
+export function orderQueue(q: DeckQueue, shuffle: boolean): DeckQueue {
+  if (shuffle) return { learning: q.learning, review: shuffled(q.review), fresh: shuffled(q.fresh) };
+  return {
+    learning: q.learning,
+    review: [...q.review].sort((a, b) => a.due - b.due),
+    fresh: [...q.fresh].sort((a, b) => a.createdAt - b.createdAt),
+  };
+}
+
 export function removeFrom(q: DeckQueue, id: string): DeckQueue {
   return {
     learning: q.learning.filter((c) => c.id !== id),

@@ -41,7 +41,7 @@ export default function DeckForm() {
           headerRight: () => <HeaderText label={existing ? 'Save' : 'Create'} bold disabled={!name.trim()} onPress={save} />,
         }}
       />
-      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={{ backgroundColor: c.bg }} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <View style={[styles.preview, { backgroundColor: color + '1F' }]}>
           <Icon name="rectangle.stack.fill" size={30} color={color} />
         </View>

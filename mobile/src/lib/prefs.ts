@@ -10,9 +10,15 @@ export interface Prefs {
   swipeHints: boolean;
   /** Read French cards aloud automatically while studying. */
   autoSpeak: boolean;
+  /** Send one random quote from the Quotes tab each day. */
+  dailyQuote: boolean;
+  /** Time of day for the daily quote, in minutes after midnight (540 = 9:00 AM). */
+  dailyQuoteTime: number;
+  /** Study review and new cards in random order. */
+  shuffleStudy: boolean;
 }
 
-const DEFAULTS: Prefs = { theme: 'light', haptics: true, swipeHints: true, autoSpeak: true };
+const DEFAULTS: Prefs = { theme: 'light', haptics: true, swipeHints: true, autoSpeak: true, dailyQuote: false, dailyQuoteTime: 540, shuffleStudy: false };
 
 function read(): Prefs {
   try {
@@ -35,6 +41,14 @@ export function setPref<K extends keyof Prefs>(key: K, value: Prefs[K]) {
   Storage.setItemSync('prefs', JSON.stringify(prefs));
   if (key === 'theme') applyTheme();
   listeners.forEach((l) => l());
+}
+
+/** Runs after any preference changes. */
+export function onPrefsChange(fn: () => void) {
+  listeners.add(fn);
+  return () => {
+    listeners.delete(fn);
+  };
 }
 
 export function usePrefs() {

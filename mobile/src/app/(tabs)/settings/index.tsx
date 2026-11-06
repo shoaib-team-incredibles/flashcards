@@ -87,6 +87,10 @@ export default function Settings() {
     <>
       <Stack.Screen options={{ title: 'Settings', headerLeft: () => <HeaderLogo /> }} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={styles.content}>
+        <Section>
+          <Row title="Stats" subtitle="Reviews, retention and what’s coming up" icon="chart.bar.fill" iconBg="#FF9500" onPress={() => router.push('/settings/stats')} last />
+        </Section>
+
         <Section title="Appearance">
           {THEMES.map((t, i) => (
             <Row

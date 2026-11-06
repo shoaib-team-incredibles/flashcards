@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Bars, Heatmap, StackBar } from '@/components/Charts';
-import { EmptyState, HeaderLogo, Stat } from '@/components/ui';
+import { EmptyState, Stat } from '@/components/ui';
 import { getAllReviews, getCards, useQuery } from '@/lib/db';
 import { recallProbability } from '@/lib/fsrs';
 import { computeStreak } from '@/lib/session';
@@ -56,7 +56,7 @@ export default function Stats() {
 
   return (
     <>
-      <Stack.Screen options={{ title: 'Stats', headerLeft: () => <HeaderLogo /> }} />
+      <Stack.Screen options={{ title: 'Stats' }} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={styles.content}>
         {cards.length === 0 ? (
           <EmptyState icon="chart.bar" title="No stats yet" body="Study a few cards and your progress will show up here." />

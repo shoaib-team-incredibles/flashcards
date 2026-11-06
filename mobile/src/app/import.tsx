@@ -62,7 +62,7 @@ export default function Import() {
           headerRight: () => <HeaderText label="Import" bold disabled={!fresh.length} onPress={run} />,
         }}
       />
-      <ScrollView style={{ backgroundColor: c.bg }} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={{ backgroundColor: c.bg }} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
         <Text style={{ color: c.muted, fontSize: 15, lineHeight: 21 }}>
           Paste cards in almost any format — <Text style={{ fontWeight: '600' }}>front :: back</Text>, tab or CSV, Anki or Quizlet exports, Q:/A: blocks, Markdown headings or JSON.
         </Text>

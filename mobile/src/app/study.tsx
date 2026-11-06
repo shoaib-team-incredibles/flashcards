@@ -9,8 +9,8 @@ import { Button, Icon, PressableScale } from '@/components/ui';
 import { deckOptions, getCard, updateCard, useQuery, type Card, type Deck } from '@/lib/db';
 import { formatInterval, previewAll, RATING_LABEL, RATINGS, type Rating } from '@/lib/fsrs';
 import { haptic } from '@/lib/haptics';
-import { setPref, usePrefs } from '@/lib/prefs';
-import { answerCard, loadStudyQueue, pickNext, removeFrom, undoAnswer, type DeckQueue } from '@/lib/session';
+import { getPrefs, setPref, usePrefs } from '@/lib/prefs';
+import { answerCard, loadStudyQueue, orderQueue, pickNext, removeFrom, undoAnswer, type DeckQueue } from '@/lib/session';
 import { RATING_COLOR, radius, useColors } from '@/lib/theme';
 import { frenchAudio, hasFrenchFront, isFrench, italicRuns, speakEnglish, speakFrench, speakFrenchList, speakMeaning, stopSpeaking } from '@/lib/speech';
 import { formatDuration, plural } from '@/lib/utils';
@@ -34,7 +34,10 @@ export default function Study() {
   const prefs = usePrefs();
   const { deck: deckParam } = useLocalSearchParams<{ deck?: string }>();
 
-  const initial = useMemo(() => loadStudyQueue(deckParam ?? null), [deckParam]);
+  const initial = useMemo(() => {
+    const loaded = loadStudyQueue(deckParam ?? null);
+    return { ...loaded, queue: orderQueue(loaded.queue, getPrefs().shuffleStudy) };
+  }, [deckParam]);
   const decks = useMemo(() => new Map(initial.decks.map((d) => [d.id, d])), [initial]);
   const [queue, setQueue] = useState<DeckQueue>(initial.queue);
   const [currentId, setCurrentId] = useState<string | null>(() => pickNext(initial.queue, 0)?.id ?? null);
@@ -134,6 +137,15 @@ export default function Study() {
     haptic.warning();
   }, [current, queue, counter]);
 
+  const toggleShuffle = () => {
+    const on = !prefs.shuffleStudy;
+    setPref('shuffleStudy', on);
+    const next = orderQueue(queue, on);
+    setQueue(next);
+    // Before the answer is shown, swap in a card from the new order too.
+    if (!revealed) setCurrentId(pickNext(next, counter)?.id ?? null);
+  };
+
   const more = () => {
     if (!current) return;
     const edit = () => router.push({ pathname: '/card', params: { id: current.id } });
@@ -186,6 +198,13 @@ export default function Study() {
             <Count n={queue.review.length} color={c.good} active={current?.state === 2} label="Review" />
           </View>
         </View>
+        <CircleButton
+          icon="shuffle"
+          label={prefs.shuffleStudy ? 'Shuffle on. Tap to study in order' : 'Shuffle cards'}
+          onPress={toggleShuffle}
+          active={prefs.shuffleStudy}
+          disabled={!remaining}
+        />
         <CircleButton icon="arrow.uturn.backward" label="Undo" onPress={undo} disabled={!history.length} />
         <CircleButton icon="ellipsis" label="More" onPress={more} disabled={!current} />
       </View>
@@ -322,7 +341,7 @@ function Count({ n, color, active, label }: { n: number; color: string; active: 
   );
 }
 
-function CircleButton({ icon, label, onPress, disabled }: { icon: 'xmark' | 'arrow.uturn.backward' | 'ellipsis'; label: string; onPress: () => void; disabled?: boolean }) {
+function CircleButton({ icon, label, onPress, disabled, active }: { icon: 'xmark' | 'arrow.uturn.backward' | 'ellipsis' | 'shuffle'; label: string; onPress: () => void; disabled?: boolean; active?: boolean }) {
   const c = useColors();
   return (
     <Pressable
@@ -330,8 +349,9 @@ function CircleButton({ icon, label, onPress, disabled }: { icon: 'xmark' | 'arr
       disabled={disabled}
       accessibilityLabel={label}
       hitSlop={6}
-      style={({ pressed }) => [styles.circle, { backgroundColor: c.surface, opacity: disabled ? 0.35 : pressed ? 0.6 : 1 }]}>
-      <Icon name={icon} size={15} color={c.fg} />
+      accessibilityState={{ selected: !!active, disabled: !!disabled }}
+      style={({ pressed }) => [styles.circle, { backgroundColor: active ? c.accent : c.surface, opacity: disabled ? 0.35 : pressed ? 0.6 : 1 }]}>
+      <Icon name={icon} size={15} color={active ? c.accentFg : c.fg} />
     </Pressable>
   );
 }

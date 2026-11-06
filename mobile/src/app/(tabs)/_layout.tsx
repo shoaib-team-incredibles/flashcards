@@ -22,9 +22,9 @@ export default function TabsLayout() {
         <NativeTabs.Trigger.Icon sf={{ default: 'rectangle.stack', selected: 'rectangle.stack.fill' }} md="stacks" />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="stats">
-        <NativeTabs.Trigger.Label>Stats</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf={{ default: 'chart.bar', selected: 'chart.bar.fill' }} md="bar_chart" />
+      <NativeTabs.Trigger name="quotes">
+        <NativeTabs.Trigger.Label>Quotes</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf={{ default: 'quote.bubble', selected: 'quote.bubble.fill' }} md="format_quote" />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="settings">
