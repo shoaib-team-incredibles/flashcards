@@ -109,7 +109,7 @@ export default function Settings() {
             <Row title="Sync isn’t set up" icon="icloud.slash.fill" iconBg="#8E8E93" last />
           </Section>
         ) : syncStatus.state === 'signed-out' ? (
-          <Section title="Sync" footer="Sign in with email and password to keep decks, cards and progress in step with KnowDeck on the web.">
+          <Section title="Sync" footer="Sign in with email and password to keep decks, cards, progress and quotes in step across your devices and KnowDeck on the web.">
             <Row title="Sign in to sync" icon="arrow.triangle.2.circlepath.icloud.fill" iconBg={c.accent} onPress={() => router.push('/sync')} last />
           </Section>
         ) : (

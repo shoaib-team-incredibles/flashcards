@@ -1,13 +1,13 @@
-import { createClient } from '@supabase/supabase-js'
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
 import { useSyncExternalStore } from 'react'
 import { applyingRemote, db, onLocalChange, type Card, type Deck, type ReviewLog, type TestResult } from './db'
 import { createSyncController, keyOf, parseReviewSyncId, reviewSyncId, type OutboxEntry, type SyncAdapter, type SyncKind } from './sync-core'
+import { firebaseConfig } from './firebase-config'
 import { uid } from './utils'
 
-const url = import.meta.env.VITE_SUPABASE_URL as string | undefined
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
-
-export const supabase = url && anonKey ? createClient(url, anonKey) : null
+const app = initializeApp(firebaseConfig)
+const backend = { app, auth: getAuth(app) }
 
 function deviceId() {
   try {
@@ -35,6 +35,7 @@ const adapter: SyncAdapter = {
     if (kind === 'deck') return (await db.decks.get(id)) as unknown as Record<string, unknown> | undefined
     if (kind === 'card') return (await db.cards.get(id)) as unknown as Record<string, unknown> | undefined
     if (kind === 'test') return (await db.tests.get(id)) as unknown as Record<string, unknown> | undefined
+    if (kind === 'quote') return undefined // quotes only exist on iOS for now
     const { cardId, ts } = parseReviewSyncId(id)
     const r = await findReview(cardId, ts)
     if (!r) return undefined
@@ -59,6 +60,7 @@ const adapter: SyncAdapter = {
         const applied: string[] = []
         for (let i = 0; i < records.length; i++) {
           const r = records[i]
+          if (r.kind === 'quote') continue // quotes only exist on iOS for now
           const mine = local[i]
           if (mine && mine.ts > r.updated_at) continue // our newer edit wins; it gets pushed next
           const data = r.deleted ? null : r.data
@@ -103,9 +105,9 @@ const adapter: SyncAdapter = {
   },
 }
 
-export const sync = createSyncController(supabase, adapter)
+export const sync = createSyncController(backend, adapter)
 
-if (supabase) {
+{
   sync.start()
   onLocalChange(() => sync.schedule())
   window.addEventListener('focus', () => sync.schedule(0))

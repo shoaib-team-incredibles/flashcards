@@ -5,7 +5,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { applyTheme } from '@/lib/prefs';
 import { startQuoteNotifications } from '@/lib/quote-notifications';
-import '@/lib/sync'; // starts background sync when Supabase is configured
+import '@/lib/sync'; // starts background Firebase sync
 import { palette } from '@/lib/theme';
 
 applyTheme();

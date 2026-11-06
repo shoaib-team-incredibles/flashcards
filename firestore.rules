@@ -1,0 +1,18 @@
+rules_version = '2';
+
+// Each user's synced records live under users/{uid}/records/{kind:id}.
+// Last write wins: an update must not be older than what's stored, and the
+// server stamps every write so pulls can page by server time.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid}/records/{recordId} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.server_ts == request.time;
+      allow update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.server_ts == request.time
+        && request.resource.data.updated_at >= resource.data.updated_at;
+      allow delete: if false;
+    }
+  }
+}

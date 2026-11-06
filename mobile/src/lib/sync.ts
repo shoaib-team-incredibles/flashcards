@@ -1,26 +1,23 @@
 /**
- * Cloud sync with the KnowDeck web app through Supabase. The engine lives in
+ * Cloud sync with the KnowDeck web app through Firebase. The engine lives in
  * sync-core.ts (shared with the web); this file adapts it to expo-sqlite.
  */
-import 'expo-sqlite/localStorage/install';
-
-import { createClient } from '@supabase/supabase-js';
+import { initializeApp } from 'firebase/app';
+import { getReactNativePersistence, initializeAuth } from 'firebase/auth';
+import Storage from 'expo-sqlite/kv-store';
 import { useSyncExternalStore } from 'react';
 import { AppState } from 'react-native';
 
 import { getDeck, insertReview, notify, onLocalChange, putCard, putDeck, sqlite, type Card, type Deck, type ReviewLog } from './db';
 import { createSyncController, keyOf, parseReviewSyncId, reviewSyncId, type OutboxEntry, type SyncAdapter } from './sync-core';
+import { firebaseConfig } from './firebase-config';
+import { getQuote, putQuote, quotesChangedRemotely, type Quote } from './quotes';
 import { uid } from './utils';
 
-const url = process.env.EXPO_PUBLIC_SUPABASE_URL;
-const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
-
-export const supabase =
-  url && anonKey
-    ? createClient(url, anonKey, {
-        auth: { storage: localStorage, autoRefreshToken: true, persistSession: true, detectSessionInUrl: false },
-      })
-    : null;
+const app = initializeApp(firebaseConfig);
+// Keep the signed-in user across launches in the app's SQLite key-value store.
+const auth = initializeAuth(app, { persistence: getReactNativePersistence(Storage) });
+const backend = { app, auth };
 
 const getMeta = (key: string) => sqlite.getFirstSync<{ value: string }>('SELECT value FROM meta WHERE key = ?', [key])?.value;
 const setMeta = (key: string, value: string) => sqlite.runSync('INSERT OR REPLACE INTO meta (key, value) VALUES (?, ?)', [key, value]);
@@ -59,6 +56,7 @@ const adapter: SyncAdapter = {
       const { id: _local, ...rest } = r;
       return rest as unknown as Record<string, unknown>;
     }
+    if (kind === 'quote') return getQuote(id) as unknown as Record<string, unknown> | undefined;
     return undefined; // tests only exist on the web
   },
 
@@ -82,6 +80,9 @@ const adapter: SyncAdapter = {
         } else if (r.kind === 'card') {
           if (data) putCard({ ...(data as unknown as Card), tags: ((data as { tags?: string[] }).tags ?? []) });
           else sqlite.runSync('DELETE FROM cards WHERE id = ?', [r.id]);
+        } else if (r.kind === 'quote') {
+          if (data) putQuote(data as unknown as Quote);
+          else sqlite.runSync('DELETE FROM quotes WHERE id = ?', [r.id]);
         } else {
           const { cardId, ts } = parseReviewSyncId(r.id);
           if (data) insertReview(data as unknown as ReviewLog);
@@ -91,6 +92,7 @@ const adapter: SyncAdapter = {
       }
     });
     notify();
+    if (records.some((r) => r.kind === 'quote')) quotesChangedRemotely();
   },
 
   async enqueueAll() {
@@ -102,6 +104,7 @@ const adapter: SyncAdapter = {
       sqlite
         .getAllSync<{ cardId: string; ts: number }>('SELECT cardId, ts FROM reviews')
         .forEach((r) => put('review', reviewSyncId(r.cardId, r.ts), r.ts));
+      sqlite.getAllSync<{ id: string; updatedAt: number }>('SELECT id, updatedAt FROM quotes').forEach((q) => put('quote', q.id, q.updatedAt));
     });
   },
 
@@ -111,21 +114,13 @@ const adapter: SyncAdapter = {
   },
 };
 
-export const sync = createSyncController(supabase, adapter);
+export const sync = createSyncController(backend, adapter);
 
-if (supabase) {
-  sync.start();
-  onLocalChange(() => sync.schedule());
-  if (AppState.currentState === 'active') supabase.auth.startAutoRefresh();
-  AppState.addEventListener('change', (state) => {
-    if (state === 'active') {
-      supabase.auth.startAutoRefresh();
-      sync.schedule(0);
-    } else {
-      supabase.auth.stopAutoRefresh();
-    }
-  });
-}
+sync.start();
+onLocalChange(() => sync.schedule());
+AppState.addEventListener('change', (state) => {
+  if (state === 'active') sync.schedule(0);
+});
 
 export function useSyncStatus() {
   return useSyncExternalStore(sync.subscribe, sync.getStatus);

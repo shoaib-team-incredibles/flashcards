@@ -1,16 +1,40 @@
 /**
- * Supabase sync engine shared by the web and iOS apps (this file is copied verbatim
+ * Firebase sync engine shared by the web and iOS apps (this file is copied verbatim
  * between src/lib and mobile/src/lib — keep the two in step).
  *
- * Model: every synced record (deck, card, review, test) is one row in `sync_records`.
- * Each device keeps a local outbox of keys it changed. A sync pushes the outbox
- * (row present → upsert, row gone → tombstone), then pulls everything whose
- * server_ts moved past this device's cursor. Conflicts are last-write-wins on the
- * client timestamp, enforced by a trigger on the server and by the outbox locally.
+ * Model: every synced record (deck, card, review, test, quote) is one Firestore
+ * document at users/{uid}/records/{kind:id}. Each device keeps a local outbox of keys
+ * it changed. A sync pushes the outbox (row present → write, row gone → tombstone),
+ * then pulls everything whose server_ts moved past this device's cursor. Conflicts are
+ * last-write-wins on the client timestamp, enforced by firestore.rules and locally by
+ * the outbox.
  */
-import type { SupabaseClient } from '@supabase/supabase-js'
+import type { FirebaseApp } from 'firebase/app'
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut as fbSignOut,
+  type Auth,
+} from 'firebase/auth'
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  limit,
+  orderBy,
+  query,
+  serverTimestamp,
+  startAfter,
+  Timestamp,
+  where,
+  writeBatch,
+  type Firestore,
+  type QueryDocumentSnapshot,
+} from 'firebase/firestore'
 
-export type SyncKind = 'deck' | 'card' | 'review' | 'test'
+export type SyncKind = 'deck' | 'card' | 'review' | 'test' | 'quote'
 
 export interface OutboxEntry {
   key: string // `${kind}:${id}`
@@ -26,7 +50,7 @@ export interface RemoteRecord {
   updated_at: number
   deleted: boolean
   device: string | null
-  server_ts: string
+  server_ts: number // ms
 }
 
 /** Storage operations each app implements on top of its own database. */
@@ -56,7 +80,19 @@ const PAGE = 1000
 const PUSH_BATCH = 500
 const OVERLAP_MS = 10_000 // re-read a little behind the cursor so slow commits are never missed
 
-export async function runSync(client: SupabaseClient, userId: string, a: SyncAdapter) {
+
+export interface SyncBackend {
+  app: FirebaseApp
+  auth: Auth
+}
+
+const records = (db: Firestore, userId: string) => collection(db, 'users', userId, 'records')
+const docId = (kind: SyncKind, id: string) => `${kind}:${id}`.replace(/\//g, '%2F')
+
+/** Firestore rejects undefined values; JSON round-trip drops them like the old JSON column did. */
+const clean = (data: Record<string, unknown>) => JSON.parse(JSON.stringify(data)) as Record<string, unknown>
+
+export async function runSync(db: Firestore, userId: string, a: SyncAdapter) {
   if (!(await a.getMeta(`init:${userId}`))) {
     await a.enqueueAll()
     await a.setMeta(`init:${userId}`, '1')
@@ -64,17 +100,33 @@ export async function runSync(client: SupabaseClient, userId: string, a: SyncAda
 
   // ---- push ----
   const outbox = await a.getOutbox()
+  const col = records(db, userId)
   let pushed = 0
   for (let i = 0; i < outbox.length; i += PUSH_BATCH) {
     const batch = outbox.slice(i, i + PUSH_BATCH)
     const rows = await Promise.all(
       batch.map(async (e) => {
         const data = await a.readRecord(e.kind, e.id)
-        return { user_id: userId, kind: e.kind, id: e.id, data: data ?? null, deleted: !data, updated_at: e.ts, device: a.device }
+        return { e, row: { kind: e.kind, id: e.id, data: data ? clean(data) : null, deleted: !data, updated_at: e.ts, device: a.device, server_ts: serverTimestamp() } }
       }),
     )
-    const { error } = await client.from('sync_records').upsert(rows, { onConflict: 'user_id,kind,id' })
-    if (error) throw new Error(error.message)
+    const wb = writeBatch(db)
+    for (const { e, row } of rows) wb.set(doc(col, docId(e.kind, e.id)), row)
+    try {
+      await wb.commit()
+    } catch (err) {
+      // One stale write (another device has a newer edit) rejects the whole batch: retry one by one, dropping the stale ones.
+      if ((err as { code?: string }).code !== 'permission-denied') throw err
+      for (const { e, row } of rows) {
+        const one = writeBatch(db)
+        one.set(doc(col, docId(e.kind, e.id)), row)
+        try {
+          await one.commit()
+        } catch (err2) {
+          if ((err2 as { code?: string }).code !== 'permission-denied') throw err2
+        }
+      }
+    }
     await a.clearOutbox(batch)
     pushed += batch.length
   }
@@ -82,27 +134,25 @@ export async function runSync(client: SupabaseClient, userId: string, a: SyncAda
   // ---- pull ----
   const cursorKey = `cursor:${userId}`
   const cursor = await a.getMeta(cursorKey)
-  const since = cursor ? new Date(new Date(cursor).getTime() - OVERLAP_MS).toISOString() : '1970-01-01T00:00:00Z'
-  let latest = cursor
+  const sinceMs = cursor ? Number(cursor) - OVERLAP_MS : 0
+  let latest = cursor ? Number(cursor) : 0
   let pulled = 0
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await client
-      .from('sync_records')
-      .select('kind,id,data,updated_at,deleted,device,server_ts')
-      .gt('server_ts', since)
-      .order('server_ts')
-      .order('kind')
-      .order('id')
-      .range(from, from + PAGE - 1)
-    if (error) throw new Error(error.message)
-    const rows = (data ?? []) as RemoteRecord[]
+  let after: QueryDocumentSnapshot | undefined
+  for (;;) {
+    const parts = [where('server_ts', '>', Timestamp.fromMillis(sinceMs)), orderBy('server_ts'), ...(after ? [startAfter(after)] : []), limit(PAGE)]
+    const snap = await getDocs(query(col, ...parts))
+    const rows: RemoteRecord[] = snap.docs.map((d) => {
+      const v = d.data()
+      return { kind: v.kind, id: v.id, data: v.data ?? null, updated_at: v.updated_at, deleted: !!v.deleted, device: v.device ?? null, server_ts: (v.server_ts as Timestamp).toMillis() }
+    })
     const foreign = rows.filter((r) => r.device !== a.device)
     if (foreign.length) await a.applyRemote(foreign)
     pulled += foreign.length
-    for (const r of rows) if (!latest || r.server_ts > latest) latest = r.server_ts
-    if (rows.length < PAGE) break
+    for (const r of rows) if (r.server_ts > latest) latest = r.server_ts
+    if (snap.docs.length < PAGE) break
+    after = snap.docs[snap.docs.length - 1]
   }
-  if (latest && latest !== cursor) await a.setMeta(cursorKey, latest)
+  if (latest && String(latest) !== cursor) await a.setMeta(cursorKey, String(latest))
   return { pushed, pulled }
 }
 
@@ -117,7 +167,9 @@ export interface SyncStatus {
   error?: string
 }
 
-export function createSyncController(client: SupabaseClient | null, adapter: SyncAdapter) {
+export function createSyncController(backend: SyncBackend | null, adapter: SyncAdapter) {
+  const client = backend
+  const db = backend ? getFirestore(backend.app) : null
   let status: SyncStatus = { state: client ? 'signed-out' : 'off' }
   let userId: string | undefined
   let running = false
@@ -132,7 +184,7 @@ export function createSyncController(client: SupabaseClient | null, adapter: Syn
   }
 
   async function syncNow(): Promise<void> {
-    if (!client || !userId) return
+    if (!db || !userId) return
     if (running) {
       again = true
       return
@@ -140,7 +192,7 @@ export function createSyncController(client: SupabaseClient | null, adapter: Syn
     running = true
     set({ state: 'syncing', error: undefined })
     try {
-      await runSync(client, userId, adapter)
+      await runSync(db, userId, adapter)
       set({ state: 'idle', lastSync: Date.now() })
     } catch (e) {
       set({ state: 'error', error: e instanceof Error ? e.message : String(e) })
@@ -162,16 +214,16 @@ export function createSyncController(client: SupabaseClient | null, adapter: Syn
   function start() {
     if (!client || started) return
     started = true
-    client.auth.onAuthStateChange((event, session) => {
-      const id = session?.user.id
+    onAuthStateChanged(client.auth, (user) => {
+      const id = user?.uid
       const changed = id !== userId
       userId = id
       if (!id) {
         set({ state: 'signed-out', email: undefined, lastSync: undefined, error: undefined })
         return
       }
-      set({ email: session?.user.email, state: status.state === 'signed-out' ? 'idle' : status.state })
-      if (changed || event === 'SIGNED_IN') schedule(0)
+      set({ email: user?.email ?? undefined, state: status.state === 'signed-out' ? 'idle' : status.state })
+      if (changed) schedule(0)
     })
     setInterval(() => schedule(0), 60_000)
   }
@@ -189,24 +241,41 @@ export function createSyncController(client: SupabaseClient | null, adapter: Syn
     },
     async signIn(email: string, password: string) {
       if (!client) throw new Error('Sync is not configured')
-      const { error } = await client.auth.signInWithPassword({ email: email.trim(), password })
-      if (error) throw new Error(error.message)
+      try {
+        await signInWithEmailAndPassword(client.auth, email.trim(), password)
+      } catch (e) {
+        throw new Error(authMessage(e))
+      }
     },
-    /** Create an account. Returns false when the project still requires email confirmation first. */
+    /** Create an account and sign in. Always true with Firebase (no email confirmation step). */
     async signUp(email: string, password: string) {
       if (!client) throw new Error('Sync is not configured')
-      const { data, error } = await client.auth.signUp({ email: email.trim(), password })
-      if (error) throw new Error(error.message)
-      if (data.session) return true
-      // The account may already be confirmed (e.g. confirmed server-side): try signing straight in.
-      const signIn = await client.auth.signInWithPassword({ email: email.trim(), password })
-      return !signIn.error
+      try {
+        await createUserWithEmailAndPassword(client.auth, email.trim(), password)
+        return true
+      } catch (e) {
+        throw new Error(authMessage(e))
+      }
     },
     async signOut() {
       if (!client) return
-      await client.auth.signOut()
+      await fbSignOut(client.auth)
     },
   }
 }
 
 export type SyncController = ReturnType<typeof createSyncController>
+
+function authMessage(e: unknown) {
+  const code = (e as { code?: string }).code ?? ''
+  const messages: Record<string, string> = {
+    'auth/invalid-credential': 'Wrong email or password.',
+    'auth/invalid-email': 'That email address doesn’t look right.',
+    'auth/email-already-in-use': 'An account with this email already exists. Sign in instead.',
+    'auth/weak-password': 'Use a password of at least 6 characters.',
+    'auth/too-many-requests': 'Too many attempts. Try again in a few minutes.',
+    'auth/network-request-failed': 'No connection. Check your internet and try again.',
+    'auth/operation-not-allowed': 'Email sign-in isn’t turned on for this app yet.',
+  }
+  return messages[code] ?? (e instanceof Error ? e.message : String(e))
+}

@@ -32,8 +32,7 @@ export function SyncPanel() {
         <div>
           <div className="text-sm font-medium">Sync isn’t set up</div>
           <div className="mt-0.5 text-[13px] text-muted">
-            Add <code className="font-mono text-[12px]">VITE_SUPABASE_URL</code> and <code className="font-mono text-[12px]">VITE_SUPABASE_ANON_KEY</code> to{' '}
-            <code className="font-mono text-[12px]">.env.local</code> to sync decks with the iOS app.
+            Cloud sync isn’t available in this build.
           </div>
         </div>
       </Panel>

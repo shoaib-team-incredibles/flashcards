@@ -122,6 +122,12 @@ function markReviews(where: string, params: (string | number)[]) {
     mark('review', reviewSyncId(r.cardId, r.ts));
   }
 }
+/** Queue one record for the next sync push from outside a write() (e.g. quotes). */
+export function markForSync(kind: SyncKind, id: string) {
+  mark(kind, id);
+  marked = false;
+  localChangeListeners.forEach((l) => l());
+}
 function markAll() {
   getDecks().forEach((d) => mark('deck', d.id));
   sqlite.getAllSync<{ id: string }>('SELECT id FROM cards').forEach((c) => mark('card', c.id));

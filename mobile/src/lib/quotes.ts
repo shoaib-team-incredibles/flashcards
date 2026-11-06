@@ -3,7 +3,7 @@
  * Every write calls `notify()` so `useQuery` screens refresh, then reschedules
  * the daily quote notification so it always draws from the current list.
  */
-import { notify, sqlite } from './db';
+import { markForSync, notify, sqlite } from './db';
 import { uid } from './utils';
 
 export { fitsNotification, NOTIFICATION_MAX_CHARS, parseQuotes } from './quote-parse';
@@ -32,9 +32,21 @@ export function onQuotesChange(fn: () => void) {
   };
 }
 
-function changed() {
+/** A local edit: refresh screens, reschedule notifications and queue the quotes for sync. */
+function changed(...ids: string[]) {
+  ids.forEach((id) => markForSync('quote', id));
   notify();
   changeListeners.forEach((l) => l());
+}
+
+/** Quotes arrived from another device: refresh screens and notifications, without re-queuing them. */
+export function quotesChangedRemotely() {
+  changeListeners.forEach((l) => l());
+}
+
+/** Insert or replace a quote as-is (used by sync). */
+export function putQuote(q: Quote) {
+  sqlite.runSync('INSERT OR REPLACE INTO quotes (id, text, author, createdAt, updatedAt) VALUES (?,?,?,?,?)', [q.id, q.text, q.author ?? '', q.createdAt, q.updatedAt]);
 }
 
 export function getQuotes(): Quote[] {
@@ -49,14 +61,14 @@ export function addQuote(text: string, author: string): Quote {
   const now = Date.now();
   const q: Quote = { id: uid(), text: text.trim(), author: author.trim(), createdAt: now, updatedAt: now };
   sqlite.runSync('INSERT INTO quotes (id, text, author, createdAt, updatedAt) VALUES (?,?,?,?,?)', [q.id, q.text, q.author, q.createdAt, q.updatedAt]);
-  changed();
+  changed(q.id);
   return q;
 }
 
 /** Add many quotes in one go, skipping any whose text is already saved. Returns how many were added. */
 export function addQuotes(items: { text: string; author: string }[]): number {
   const seen = new Set(getQuotes().map((q) => normalize(q.text)));
-  let added = 0;
+  const ids: string[] = [];
   const base = Date.now();
   sqlite.withTransactionSync(() => {
     // Insert in reverse so the list (newest first) shows them in pasted order.
@@ -66,24 +78,25 @@ export function addQuotes(items: { text: string; author: string }[]): number {
       if (!text || seen.has(key)) return;
       seen.add(key);
       const t = base + i;
-      sqlite.runSync('INSERT INTO quotes (id, text, author, createdAt, updatedAt) VALUES (?,?,?,?,?)', [uid(), text, item.author.trim(), t, t]);
-      added++;
+      const id = uid();
+      sqlite.runSync('INSERT INTO quotes (id, text, author, createdAt, updatedAt) VALUES (?,?,?,?,?)', [id, text, item.author.trim(), t, t]);
+      ids.push(id);
     });
   });
-  if (added) changed();
-  return added;
+  if (ids.length) changed(...ids);
+  return ids.length;
 }
 
 const normalize = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
 
 export function updateQuote(id: string, text: string, author: string) {
   sqlite.runSync('UPDATE quotes SET text = ?, author = ?, updatedAt = ? WHERE id = ?', [text.trim(), author.trim(), Date.now(), id]);
-  changed();
+  changed(id);
 }
 
 export function deleteQuote(id: string) {
   sqlite.runSync('DELETE FROM quotes WHERE id = ?', [id]);
-  changed();
+  changed(id);
 }
 
 /** "— Author" line, or empty when the quote has no author. */

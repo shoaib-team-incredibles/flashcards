@@ -12,7 +12,7 @@ import { SettingsPage } from './pages/Settings'
 import { Stats } from './pages/Stats'
 import { Study } from './pages/Study'
 import { TestRun, TestSetup } from './pages/Test'
-import './lib/sync' // starts background sync when Supabase is configured
+import './lib/sync' // starts background Firebase sync
 import './index.css'
 
 // The French page bundles ~1,400 cards; load it only when opened.
