@@ -37,7 +37,7 @@
       "expo-sqlite",
       "expo-sharing",
       "@react-native-community/datetimepicker",
-      "expo-notifications"
+      "./plugins/without-push-entitlement.js"
     ],
     "experiments": {
       "typedRoutes": true,
