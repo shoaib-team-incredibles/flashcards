@@ -10,6 +10,7 @@ import { DeckPage } from './pages/DeckPage'
 import { Import } from './pages/Import'
 import { SettingsPage } from './pages/Settings'
 import { Stats } from './pages/Stats'
+import { Quotes } from './pages/Quotes'
 import { Study } from './pages/Study'
 import { TestRun, TestSetup } from './pages/Test'
 import './lib/sync' // starts background Firebase sync
@@ -33,6 +34,7 @@ function App() {
             <Route path="/french" element={<Suspense fallback={<div className="h-64" />}><French /></Suspense>} />
             <Route path="/english" element={<English />} />
             <Route path="/import" element={<Import />} />
+            <Route path="/quotes" element={<Quotes />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="*" element={<Dashboard />} />

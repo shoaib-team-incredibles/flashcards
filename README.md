@@ -15,6 +15,7 @@ npm run build    # static site in dist/ — host anywhere (Vercel, Netlify, GitH
 - **Tests** — multiple choice, typed answers (typo/accent tolerant), true/false, self-check. Focus on weakest cards; misses are fed back into the review schedule.
 - **Import** — paste or drop: `front :: back`, tab/CSV/semicolon, Anki "Notes in Plain Text", Quizlet, `Q:`/`A:` blocks, Markdown headings, JSON. Live preview, duplicate detection, AI prompt to turn notes into cards.
 - **Stats** — heatmap, reviews per day, forecast, retention, card maturity, test score history.
+- **Quotes** — save lines worth keeping, paste a whole note at once, and see a quote of the day on Home. Synced with the iOS app, which sends one as a daily notification.
 - **Data** — stored in IndexedDB in your browser, synced with the iOS app through Firebase when you sign in. Back up / restore everything as JSON in Settings.
 - **French** — a French section (`/french`): 1,000 most useful words, 200 expressions and 200 grammar cards (ordered by payoff, with notes on irregular forms, false friends and register), a mastery guide, and audio via the browser's French voice (auto-play, **R** to replay, tap italic French to hear it). Content lives in `decks/french-*.json` and `decks/french-guide.md`; **Update** on the French page adds new cards and refreshes corrected ones without touching review history.
 - Markdown on cards (code, tables, images), dark mode, ⌘K command palette, mobile layout.

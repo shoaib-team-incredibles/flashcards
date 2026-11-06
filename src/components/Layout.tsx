@@ -1,4 +1,4 @@
-import { BarChart3, BookA, ClipboardCheck, Home, Languages, Layers, Plus, Search, Settings, Upload } from 'lucide-react'
+import { BarChart3, BookA, ClipboardCheck, Home, Languages, Layers, Plus, Quote, Search, Settings, Upload } from 'lucide-react'
 import { createContext, useContext, useState, type ReactNode } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useDeckSummaries, useHotkeys } from '../lib/hooks'
@@ -22,8 +22,9 @@ const NAV = [
   { to: '/test', label: 'Test', icon: ClipboardCheck },
   { to: '/french', label: 'French', icon: Languages },
   { to: '/english', label: 'English', icon: BookA },
+  { to: '/quotes', label: 'Quotes', icon: Quote },
   { to: '/import', label: 'Import', icon: Upload },
-  { to: '/stats', label: 'Stats', icon: BarChart3 },
+  { to: '/stats', label: 'Stats', icon: BarChart3, mobile: false },
 ]
 
 /** The app logo. Always links home. */
@@ -131,6 +132,9 @@ export function Layout() {
             <button onClick={() => setSearch(true)} className="flex h-9 w-9 items-center justify-center rounded-lg text-muted hover:bg-subtle" aria-label="Search">
               <Search size={19} />
             </button>
+            <NavLink to="/stats" className="flex h-9 w-9 items-center justify-center rounded-lg text-muted hover:bg-subtle" aria-label="Stats">
+              <BarChart3 size={19} />
+            </NavLink>
             <NavLink to="/settings" className="flex h-9 w-9 items-center justify-center rounded-lg text-muted hover:bg-subtle" aria-label="Settings">
               <Settings size={19} />
             </NavLink>
@@ -145,7 +149,7 @@ export function Layout() {
 
         {/* Mobile bottom nav */}
         <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-7 border-t border-line bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
-          {NAV.map((n) => (
+          {NAV.filter((n) => n.mobile !== false).map((n) => (
             <NavLink
               key={n.to}
               to={n.to}

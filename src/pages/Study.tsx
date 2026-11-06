@@ -1,4 +1,4 @@
-import { ArrowLeft, ClipboardCheck, EyeOff, Home, PartyPopper, Pencil, Undo2, Volume2, VolumeX, X } from 'lucide-react'
+import { ArrowLeft, ClipboardCheck, EyeOff, Home, PartyPopper, Pencil, Shuffle, Undo2, Volume2, VolumeX, X } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { CardEditor } from '../components/CardEditor'
@@ -8,7 +8,7 @@ import { db, deckOptions, type Card, type Deck } from '../lib/db'
 import { formatInterval, previewAll, RATING_LABEL, RATINGS, type Rating } from '../lib/fsrs'
 import { useHotkeys } from '../lib/hooks'
 import { canSpeak, englishAudio, getAutoSpeak, hasFrenchFront, isFrench, playFrench, setAutoSpeak, speakEnglish, speakMeaning, speakFrench, stopSpeaking } from '../lib/speech'
-import { answerCard, LEARN_AHEAD_MS, loadStudyQueue, undoAnswer, type DeckQueue } from '../lib/session'
+import { answerCard, getShuffleStudy, LEARN_AHEAD_MS, loadStudyQueue, orderQueue, setShuffleStudy, undoAnswer, type DeckQueue } from '../lib/session'
 import { cx, formatDuration, plural } from '../lib/utils'
 
 const RATING_STYLE: Record<Rating, string> = {
@@ -53,6 +53,7 @@ export function Study() {
   const [current, setCurrent] = useState<Card | null>(null)
   const [revealed, setRevealed] = useState(false)
   const [autoSpeak, setAuto] = useState(getAutoSpeak)
+  const [shuffle, setShuffle] = useState(getShuffleStudy)
   const [history, setHistory] = useState<HistoryEntry[]>([])
   const [counter, setCounter] = useState(0)
   const [editing, setEditing] = useState(false)
@@ -63,7 +64,8 @@ export function Study() {
   const [initialTotal, setInitialTotal] = useState(0)
 
   useEffect(() => {
-    loadStudyQueue(deckParam ? [deckParam] : null).then(({ decks, queue }) => {
+    loadStudyQueue(deckParam ? [deckParam] : null).then(({ decks, queue: loaded }) => {
+      const queue = orderQueue(loaded, getShuffleStudy())
       setDecks(new Map(decks.map((d) => [d.id, d])))
       setQueue(queue)
       setInitialTotal(queue.learning.length + queue.review.length + queue.fresh.length)
@@ -73,6 +75,21 @@ export function Study() {
       startedAt.current = Date.now()
     })
   }, [deckParam])
+
+  /** Turn shuffle on or off mid-session. The card on screen stays unless its answer isn't shown yet. */
+  const toggleShuffle = () => {
+    const on = !shuffle
+    setShuffle(on)
+    setShuffleStudy(on)
+    toast(on ? 'Shuffling cards' : 'Cards back in order', { tone: 'info' })
+    if (!queue) return
+    const next = orderQueue(queue, on)
+    setQueue(next)
+    if (!revealed) {
+      setCurrent(pickNext(next, counter))
+      shownAt.current = Date.now()
+    }
+  }
 
   const exit = () => nav(deckParam ? `/deck/${deckParam}` : '/')
   const deck = current ? decks.get(current.deckId) : undefined
@@ -173,6 +190,7 @@ export function Study() {
       z: () => undo(),
       'mod+z': () => undo(),
       e: () => current && setEditing(true),
+      s: () => toggleShuffle(),
       // R = French, M = English (meaning, or a grammar card's question). Never reveals the answer early.
       r: () => speakable && (frenchFront ? playFront() : revealed && playBack()),
       m: () => speakable && current && (frenchFront ? revealed && playBack() : speakEnglish(englishAudio(current))),
@@ -231,6 +249,14 @@ export function Study() {
                 {autoSpeak ? <Volume2 size={17} /> : <VolumeX size={17} />}
               </IconButton>
             )}
+            <IconButton
+              label={shuffle ? 'Shuffle: on (S)' : 'Shuffle: off (S)'}
+              aria-pressed={shuffle}
+              onClick={toggleShuffle}
+              className={cx(shuffle && 'bg-accent-soft text-accent hover:bg-accent-soft')}
+            >
+              <Shuffle size={16} />
+            </IconButton>
             <IconButton label="Undo (Z)" onClick={undo} disabled={!history.length}>
               <Undo2 size={17} />
             </IconButton>

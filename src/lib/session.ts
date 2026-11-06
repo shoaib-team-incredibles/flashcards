@@ -96,6 +96,43 @@ export async function loadStudyQueue(deckIds: string[] | null) {
   return { decks: valid, queue }
 }
 
+function shuffled<T>(items: T[]): T[] {
+  const a = [...items]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+/**
+ * Shuffle review and new cards, or put them back in their usual order
+ * (reviews by due date, new cards as added). Learning cards always stay in
+ * due order: their short steps are timed, so shuffling them would break that.
+ */
+export function orderQueue(q: DeckQueue, shuffle: boolean): DeckQueue {
+  if (shuffle) return { learning: q.learning, review: shuffled(q.review), fresh: shuffled(q.fresh) }
+  return {
+    learning: q.learning,
+    review: [...q.review].sort((a, b) => a.due - b.due),
+    fresh: [...q.fresh].sort((a, b) => a.createdAt - b.createdAt),
+  }
+}
+
+const SHUFFLE_KEY = 'recall-shuffle-study'
+export function getShuffleStudy() {
+  try {
+    return localStorage.getItem(SHUFFLE_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+export function setShuffleStudy(on: boolean) {
+  try {
+    localStorage.setItem(SHUFFLE_KEY, on ? '1' : '0')
+  } catch {}
+}
+
 /** Save a rating: updates the card and writes a review log. Returns the log id for undo. */
 export async function answerCard(card: Card, rating: Rating, deck: Deck | undefined, durationMs: number, source: 'study' | 'test' = 'study') {
   const now = Date.now()

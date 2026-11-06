@@ -55,11 +55,20 @@ export interface TestResult {
   items: TestItemResult[]
 }
 
+export interface Quote {
+  id: string
+  text: string
+  author: string
+  createdAt: number
+  updatedAt: number
+}
+
 class RecallDB extends Dexie {
   decks!: Table<Deck, string>
   cards!: Table<Card, string>
   reviews!: Table<ReviewLog, number>
   tests!: Table<TestResult, string>
+  quotes!: Table<Quote, string>
   outbox!: Table<OutboxEntry, string>
   meta!: Table<{ key: string; value: string }, string>
 
@@ -74,6 +83,9 @@ class RecallDB extends Dexie {
     this.version(2).stores({
       outbox: 'key',
       meta: 'key',
+    })
+    this.version(3).stores({
+      quotes: 'id, createdAt',
     })
   }
 }
@@ -125,6 +137,7 @@ watch(db.decks, 'deck', (d) => d.id)
 watch(db.cards, 'card', (c) => c.id)
 watch(db.reviews, 'review', (r) => reviewSyncId(r.cardId, r.ts))
 watch(db.tests, 'test', (t) => t.id)
+watch(db.quotes, 'quote', (q) => q.id)
 
 export function deckOptions(deck?: Deck): SchedOptions {
   return { ...DEFAULT_OPTIONS, retention: deck?.retention ?? DEFAULT_OPTIONS.retention }

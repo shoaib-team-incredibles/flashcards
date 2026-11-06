@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { useSyncExternalStore } from 'react'
-import { applyingRemote, db, onLocalChange, type Card, type Deck, type ReviewLog, type TestResult } from './db'
+import { applyingRemote, db, onLocalChange, type Card, type Deck, type Quote, type ReviewLog, type TestResult } from './db'
 import { createSyncController, keyOf, parseReviewSyncId, reviewSyncId, type OutboxEntry, type SyncAdapter, type SyncKind } from './sync-core'
 import { firebaseConfig } from './firebase-config'
 import { uid } from './utils'
@@ -35,7 +35,7 @@ const adapter: SyncAdapter = {
     if (kind === 'deck') return (await db.decks.get(id)) as unknown as Record<string, unknown> | undefined
     if (kind === 'card') return (await db.cards.get(id)) as unknown as Record<string, unknown> | undefined
     if (kind === 'test') return (await db.tests.get(id)) as unknown as Record<string, unknown> | undefined
-    if (kind === 'quote') return undefined // quotes only exist on iOS for now
+    if (kind === 'quote') return (await db.quotes.get(id)) as unknown as Record<string, unknown> | undefined
     const { cardId, ts } = parseReviewSyncId(id)
     const r = await findReview(cardId, ts)
     if (!r) return undefined
@@ -55,12 +55,11 @@ const adapter: SyncAdapter = {
     const keys = records.map((r) => keyOf(r.kind, r.id))
     keys.forEach((k) => applyingRemote.add(k))
     try {
-      await db.transaction('rw', [db.decks, db.cards, db.reviews, db.tests, db.outbox], async () => {
+      await db.transaction('rw', [db.decks, db.cards, db.reviews, db.tests, db.quotes, db.outbox], async () => {
         const local = await db.outbox.bulkGet(keys)
         const applied: string[] = []
         for (let i = 0; i < records.length; i++) {
           const r = records[i]
-          if (r.kind === 'quote') continue // quotes only exist on iOS for now
           const mine = local[i]
           if (mine && mine.ts > r.updated_at) continue // our newer edit wins; it gets pushed next
           const data = r.deleted ? null : r.data
@@ -70,6 +69,9 @@ const adapter: SyncAdapter = {
           } else if (r.kind === 'card') {
             if (data) await db.cards.put(data as unknown as Card)
             else await db.cards.delete(r.id)
+          } else if (r.kind === 'quote') {
+            if (data) await db.quotes.put(data as unknown as Quote)
+            else await db.quotes.delete(r.id)
           } else if (r.kind === 'test') {
             if (data) await db.tests.put(data as unknown as TestResult)
             else await db.tests.delete(r.id)
@@ -89,13 +91,14 @@ const adapter: SyncAdapter = {
   },
 
   async enqueueAll() {
-    const [decks, cards, reviews, tests] = await Promise.all([db.decks.toArray(), db.cards.toArray(), db.reviews.toArray(), db.tests.toArray()])
+    const [decks, cards, reviews, tests, quotes] = await Promise.all([db.decks.toArray(), db.cards.toArray(), db.reviews.toArray(), db.tests.toArray(), db.quotes.toArray()])
     const entry = (kind: SyncKind, id: string, ts: number): OutboxEntry => ({ key: keyOf(kind, id), kind, id, ts })
     await db.outbox.bulkPut([
       ...decks.map((d) => entry('deck', d.id, d.createdAt)),
       ...cards.map((c) => entry('card', c.id, c.updatedAt ?? c.createdAt)),
       ...reviews.map((r) => entry('review', reviewSyncId(r.cardId, r.ts), r.ts)),
       ...tests.map((t) => entry('test', t.id, t.createdAt)),
+      ...quotes.map((q) => entry('quote', q.id, q.updatedAt)),
     ])
   },
 

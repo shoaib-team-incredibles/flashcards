@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { ArrowRight, BookOpen, ClipboardCheck, Flame, Layers, Plus, Sparkles, Target, Upload, Zap } from 'lucide-react'
+import { ArrowRight, BookOpen, ClipboardCheck, Flame, Layers, Plus, Quote as QuoteIcon, Sparkles, Target, Upload, Zap } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Heatmap } from '../components/Charts'
@@ -9,6 +9,7 @@ import { Button, Kbd, Panel, Progress, Stat } from '../components/ui'
 import { db } from '../lib/db'
 import { useDeckSummaries, useHotkeys } from '../lib/hooks'
 import { loadSampleDecks } from '../lib/sample'
+import { byline, quoteOfTheDay, useQuotes } from '../lib/quotes'
 import { computeStreak } from '../lib/session'
 import { DAY, dayKey, formatDuration, greeting, plural, relativeTime, startOfDay } from '../lib/utils'
 
@@ -16,6 +17,8 @@ export function Dashboard() {
   const summaries = useDeckSummaries()
   const shell = useShell()
   const nav = useNavigate()
+  const quotes = useQuotes()
+  const todaysQuote = useMemo(() => quoteOfTheDay(quotes ?? []), [quotes])
   const toast = useToast()
   const [loading, setLoading] = useState(false)
 
@@ -173,6 +176,17 @@ export function Dashboard() {
         />
         <Stat icon={<BookOpen size={14} className="text-easy" />} label="Cards" value={totals.cards.toLocaleString()} sub={`${totals.mature.toLocaleString()} mature`} />
       </div>
+
+      {todaysQuote && (
+        <Link to="/quotes" className="mt-4 flex gap-4 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-line-strong">
+          <QuoteIcon size={18} className="mt-1 shrink-0 text-accent" />
+          <div className="min-w-0">
+            <div className="text-[12px] font-medium text-muted">Quote of the day</div>
+            <p className="mt-1 text-[15px] leading-relaxed font-medium whitespace-pre-line">{todaysQuote.text}</p>
+            {todaysQuote.author && <p className="mt-1 text-sm text-muted">{byline(todaysQuote)}</p>}
+          </div>
+        </Link>
+      )}
 
       <Section
         title="Your decks"
