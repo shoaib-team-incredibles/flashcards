@@ -118,9 +118,14 @@ export function Dashboard() {
 
   return (
     <div>
-      <div className="mb-6">
-        <p className="text-sm text-muted">{new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}</p>
-        <h1 className="mt-0.5 text-2xl font-semibold tracking-tight sm:text-[28px]">{greeting()}</h1>
+      <div className="mb-6 flex items-end justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm text-muted">{new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}</p>
+          <h1 className="mt-0.5 text-2xl font-semibold tracking-tight sm:text-[28px]">{greeting()}</h1>
+        </div>
+        <Button onClick={shell.newDeck} className="shrink-0">
+          <Plus size={16} /> New deck
+        </Button>
       </div>
 
       {/* Hero */}

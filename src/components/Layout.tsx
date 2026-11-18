@@ -113,6 +113,10 @@ export function Layout() {
               </NavLink>
             ))}
             {summaries && summaries.length === 0 && <p className="px-3 py-2 text-[13px] text-faint">No decks yet</p>}
+            <button onClick={() => setDeckOpen(true)} className="flex h-8 w-full items-center gap-2.5 rounded-lg px-3 text-[13px] text-muted transition-colors hover:bg-subtle hover:text-fg">
+              <Plus size={14} className="-ml-0.5 shrink-0" />
+              New deck
+            </button>
           </div>
 
           <NavLink
@@ -129,6 +133,9 @@ export function Layout() {
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-line bg-bg/85 px-4 backdrop-blur-md md:hidden">
           <Logo />
           <div className="flex gap-1">
+            <button onClick={() => setDeckOpen(true)} className="flex h-9 w-9 items-center justify-center rounded-lg text-muted hover:bg-subtle" aria-label="New deck" title="New deck">
+              <Plus size={20} />
+            </button>
             <button onClick={() => setSearch(true)} className="flex h-9 w-9 items-center justify-center rounded-lg text-muted hover:bg-subtle" aria-label="Search">
               <Search size={19} />
             </button>
