@@ -1,15 +1,62 @@
 import { router, Stack } from 'expo-router';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { ActionSheetIOS, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, LinearTransition } from 'react-native-reanimated';
 
 import { DeckCard } from '@/components/DeckCard';
-import { Button, EmptyState, HeaderButton, HeaderLogo, Icon, PressableScale } from '@/components/ui';
+import { Button, EmptyState, HeaderButton, HeaderLogo, Icon, PressableScale, SearchField } from '@/components/ui';
 import { useQuery } from '@/lib/db';
-import { deckSummaries } from '@/lib/session';
+import { setPref, usePrefs, type DeckSort } from '@/lib/prefs';
+import { deckSummaries, type DeckSummary } from '@/lib/session';
 import { radius, useColors } from '@/lib/theme';
+import { plural } from '@/lib/utils';
+
+const SORTS: { value: DeckSort; label: string }[] = [
+  { value: 'due', label: 'Most due first' },
+  { value: 'recent', label: 'Newest first' },
+  { value: 'alpha', label: 'A to Z' },
+  { value: 'size', label: 'Largest first' },
+];
+
+function sortDecks(list: DeckSummary[], sort: DeckSort) {
+  const byName = (a: DeckSummary, b: DeckSummary) => a.deck.name.localeCompare(b.deck.name);
+  return list.slice().sort((a, b) => {
+    if (sort === 'alpha') return byName(a, b);
+    if (sort === 'size') return b.total - a.total || byName(a, b);
+    if (sort === 'recent') return b.deck.createdAt - a.deck.createdAt;
+    return b.counts.total - a.counts.total || byName(a, b);
+  });
+}
 
 export default function Decks() {
+  const c = useColors();
   const summaries = useQuery(deckSummaries);
+  const { deckSort } = usePrefs();
+  const [q, setQ] = useState('');
+
+  const query = q.trim().toLowerCase();
+  const shown = sortDecks(
+    summaries.filter((s) => !query || s.deck.name.toLowerCase().includes(query) || (s.deck.description ?? '').toLowerCase().includes(query)),
+    deckSort,
+  );
+  const cards = summaries.reduce((n, s) => n + s.total, 0);
+  const due = summaries.reduce((n, s) => n + s.counts.total, 0);
+
+  const pickSort = () => {
+    if (process.env.EXPO_OS !== 'ios') {
+      setPref('deckSort', SORTS[(SORTS.findIndex((s) => s.value === deckSort) + 1) % SORTS.length].value);
+      return;
+    }
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        title: 'Sort decks',
+        options: [...SORTS.map((s) => (s.value === deckSort ? `✓ ${s.label}` : s.label)), 'Cancel'],
+        cancelButtonIndex: SORTS.length,
+      },
+      (i) => SORTS[i] && setPref('deckSort', SORTS[i].value),
+    );
+  };
+
   return (
     <>
       <Stack.Screen
@@ -18,15 +65,21 @@ export default function Decks() {
           headerLeft: () => <HeaderLogo />,
           headerRight: () => (
             <View style={{ flexDirection: 'row' }}>
+              {summaries.length > 1 && <HeaderButton icon="arrow.up.arrow.down" label="Sort decks" onPress={pickSort} />}
               <HeaderButton icon="square.and.arrow.down" label="Import" onPress={() => router.push('/import')} />
               <HeaderButton icon="plus" label="New deck" onPress={() => router.push('/deck-form')} />
             </View>
           ),
         }}
       />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={styles.content}>
-        <FrenchBanner />
-        <EnglishBanner />
+      <ScrollView contentInsetAdjustmentBehavior="automatic" keyboardDismissMode="on-drag" contentContainerStyle={styles.content}>
+        {summaries.length > 3 && <SearchField value={q} onChangeText={setQ} placeholder="Search decks" />}
+        {!query && (
+          <>
+            <FrenchBanner />
+            <EnglishBanner />
+          </>
+        )}
         {summaries.length === 0 ? (
           <EmptyState
             icon="rectangle.stack"
@@ -39,12 +92,22 @@ export default function Decks() {
               </View>
             }
           />
+        ) : shown.length === 0 ? (
+          <EmptyState icon="magnifyingglass" title="No matches" body={`No deck matches “${q.trim()}”.`} />
         ) : (
-          summaries.map((s, i) => (
-            <Animated.View key={s.deck.id} entering={FadeInDown.delay(i * 30).springify().damping(18)} layout={LinearTransition.springify()}>
-              <DeckCard summary={s} />
-            </Animated.View>
-          ))
+          <>
+            {!query && (
+              <Text style={[styles.summary, { color: c.muted }]}>
+                {plural(summaries.length, 'deck')} · {plural(cards, 'card')}
+                {due > 0 ? ` · ${due.toLocaleString()} due today` : ''}
+              </Text>
+            )}
+            {shown.map((s, i) => (
+              <Animated.View key={s.deck.id} entering={FadeInDown.delay(Math.min(i, 8) * 30).springify().damping(18)} layout={LinearTransition.springify()}>
+                <DeckCard summary={s} />
+              </Animated.View>
+            ))}
+          </>
         )}
       </ScrollView>
     </>
@@ -91,4 +154,5 @@ const styles = StyleSheet.create({
   banner: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: radius.lg, borderCurve: 'continuous' },
   flag: { width: 44, height: 30, borderRadius: 6, overflow: 'hidden', flexDirection: 'row', borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(0,0,0,0.15)' },
   content: { padding: 16, gap: 10, paddingBottom: 40 },
+  summary: { fontSize: 13, fontWeight: '500', paddingHorizontal: 4, marginTop: 6 },
 });

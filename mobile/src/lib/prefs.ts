@@ -4,6 +4,8 @@ import { Appearance } from 'react-native';
 
 export type ThemePref = 'light' | 'dark' | 'system';
 
+export type DeckSort = 'due' | 'recent' | 'alpha' | 'size';
+
 export interface Prefs {
   theme: ThemePref;
   haptics: boolean;
@@ -16,9 +18,11 @@ export interface Prefs {
   dailyQuoteTime: number;
   /** Study review and new cards in random order. */
   shuffleStudy: boolean;
+  /** Order of the Decks tab. */
+  deckSort: DeckSort;
 }
 
-const DEFAULTS: Prefs = { theme: 'light', haptics: true, swipeHints: true, autoSpeak: true, dailyQuote: false, dailyQuoteTime: 540, shuffleStudy: false };
+const DEFAULTS: Prefs = { theme: 'light', haptics: true, swipeHints: true, autoSpeak: true, dailyQuote: false, dailyQuoteTime: 540, shuffleStudy: false, deckSort: 'due' };
 
 function read(): Prefs {
   try {

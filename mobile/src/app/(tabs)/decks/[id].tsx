@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { ActionSheetIOS, Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { stripMarkdown } from '@/components/CardText';
-import { Button, EmptyState, HeaderButton, Icon, Stat } from '@/components/ui';
+import { Button, EmptyState, HeaderButton, Icon, SearchField, Stat } from '@/components/ui';
 import { deleteDeck, getCards, getDeck, getReviewsSince, useQuery, type Card } from '@/lib/db';
 import { recallProbability, STATE_LABEL } from '@/lib/fsrs';
 import { haptic } from '@/lib/haptics';
@@ -24,13 +24,17 @@ export default function DeckDetail() {
     return queueCounts(deckQueue(d, getCards(id), doneTodayByDeck(getReviewsSince(startOfDay())).get(id)));
   }, [id]);
   const [filter, setFilter] = useState<Filter>('all');
+  const [q, setQ] = useState('');
+  const query = q.trim().toLowerCase();
 
   const filtered = useQuery(() => {
     const now = Date.now();
-    return getCards(id).filter((x) =>
-      filter === 'all' ? true : filter === 'new' ? x.state === 0 && !x.suspended : filter === 'suspended' ? x.suspended : !x.suspended && x.state !== 0 && x.due <= now,
+    return getCards(id).filter(
+      (x) =>
+        (filter === 'all' ? true : filter === 'new' ? x.state === 0 && !x.suspended : filter === 'suspended' ? x.suspended : !x.suspended && x.state !== 0 && x.due <= now) &&
+        (!query || x.front.toLowerCase().includes(query) || x.back.toLowerCase().includes(query) || x.tags.some((t) => t.toLowerCase().includes(query))),
     );
-  }, [id, filter]);
+  }, [id, filter, query]);
 
   const retention = useMemo(() => {
     const ps = cards.map((x) => recallProbability(x)).filter((p): p is number => p != null);
@@ -78,6 +82,7 @@ export default function DeckDetail() {
       />
       <FlatList
         contentInsetAdjustmentBehavior="automatic"
+        keyboardDismissMode="on-drag"
         data={filtered}
         keyExtractor={(x) => x.id}
         contentContainerStyle={styles.content}
@@ -90,12 +95,13 @@ export default function DeckDetail() {
               <Stat label="Recall" value={retention == null ? '—' : `${retention}%`} />
             </View>
             <Button
-              title={counts.total ? `Study ${counts.total} ${counts.total === 1 ? 'card' : 'cards'}` : 'All caught up'}
-              icon={counts.total ? 'play.fill' : 'checkmark'}
+              title={counts.total ? `Study ${counts.total} ${counts.total === 1 ? 'card' : 'cards'}` : cards.length ? 'All caught up' : 'Add a card to start'}
+              icon={counts.total ? 'play.fill' : cards.length ? 'checkmark' : 'plus'}
               size="lg"
-              disabled={!counts.total}
-              onPress={() => router.push({ pathname: '/study', params: { deck: id } })}
+              disabled={!counts.total && cards.length > 0}
+              onPress={() => (cards.length ? router.push({ pathname: '/study', params: { deck: id } }) : router.push({ pathname: '/card', params: { deck: id } }))}
             />
+            {cards.length > 5 && <SearchField value={q} onChangeText={setQ} placeholder="Search this deck" />}
             <View style={[styles.segment, { backgroundColor: c.subtle }]}>
               {(['all', 'due', 'new', 'suspended'] as Filter[]).map((f) => (
                 <Pressable
@@ -122,7 +128,7 @@ export default function DeckDetail() {
               }
             />
           ) : (
-            <Text style={{ color: c.faint, textAlign: 'center', marginTop: 24 }}>No {filter} cards</Text>
+            <Text style={{ color: c.faint, textAlign: 'center', marginTop: 24 }}>{query ? `Nothing matches “${q.trim()}”` : `No ${filter} cards`}</Text>
           )
         }
         renderItem={({ item, index }) => <CardRow card={item} first={index === 0} last={index === filtered.length - 1} />}

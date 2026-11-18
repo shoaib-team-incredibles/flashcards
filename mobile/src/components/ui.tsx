@@ -1,7 +1,7 @@
 import { SymbolView, type SFSymbol } from 'expo-symbols';
 import { router } from 'expo-router';
 import type { ReactNode } from 'react';
-import { Pressable, StyleSheet, Text, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 import { haptic } from '@/lib/haptics';
@@ -190,6 +190,28 @@ export function CountPills({ counts, size = 'md' }: { counts: { new: number; lea
 }
 
 /** App logo in the header — always navigates home. */
+/** An always-visible search field for filtering the list below it. */
+export function SearchField({ value, onChangeText, placeholder }: { value: string; onChangeText: (text: string) => void; placeholder: string }) {
+  const c = useColors();
+  return (
+    <View style={[styles.search, { backgroundColor: c.subtle }]}>
+      <Icon name="magnifyingglass" size={16} color={c.faint} weight="medium" />
+      <TextInput
+        value={value}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        placeholderTextColor={c.faint}
+        accessibilityLabel={placeholder}
+        autoCapitalize="none"
+        autoCorrect={false}
+        returnKeyType="search"
+        clearButtonMode="while-editing"
+        style={[styles.searchInput, { color: c.fg }]}
+      />
+    </View>
+  );
+}
+
 export function HeaderLogo() {
   const c = useColors();
   return (
@@ -247,5 +269,7 @@ const styles = StyleSheet.create({
   emptyTitle: { fontSize: 20, fontWeight: '700', textAlign: 'center' },
   emptyBody: { fontSize: 15, lineHeight: 21, textAlign: 'center', marginBottom: 8 },
   logo: { width: 30, height: 30, borderRadius: 9, borderCurve: 'continuous', alignItems: 'center', justifyContent: 'center' },
+  search: { flexDirection: 'row', alignItems: 'center', gap: 8, height: 40, paddingHorizontal: 12, borderRadius: 12, borderCurve: 'continuous' },
+  searchInput: { flex: 1, fontSize: 17, paddingVertical: 0 },
   headerButton: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
 });

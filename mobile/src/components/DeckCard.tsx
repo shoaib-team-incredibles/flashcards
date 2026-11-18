@@ -14,7 +14,7 @@ export function DeckCard({ summary }: { summary: DeckSummary }) {
     <PressableScale
       onPress={() => router.push({ pathname: '/decks/[id]', params: { id: deck.id } })}
       style={[styles.card, { backgroundColor: c.surface }]}
-      accessibilityLabel={`${deck.name}, ${counts.total} due`}>
+      accessibilityLabel={`${deck.name}, ${total === 0 ? 'empty' : counts.total ? `${counts.total} due` : 'all caught up'}`}>
       <View style={[styles.swatch, { backgroundColor: deck.color + '22' }]}>
         <Icon name="rectangle.stack.fill" size={18} color={deck.color} />
       </View>
@@ -31,6 +31,8 @@ export function DeckCard({ summary }: { summary: DeckSummary }) {
       </View>
       {counts.total > 0 ? (
         <CountPills counts={counts} size="sm" />
+      ) : total === 0 ? (
+        <Text style={{ color: c.faint, fontSize: 13, fontWeight: '600' }}>Empty</Text>
       ) : (
         <Icon name="checkmark.circle.fill" size={20} color={c.good} />
       )}
