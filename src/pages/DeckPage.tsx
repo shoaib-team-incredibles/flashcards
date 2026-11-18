@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { ClipboardCheck, Download, FileText, Layers, MoreHorizontal, Pause, Play, Plus, RotateCcw, Search, Settings2, Trash2, Upload } from 'lucide-react'
+import { ChevronLeft, ClipboardCheck, Download, FileText, Layers, MoreHorizontal, Pause, Play, Plus, RotateCcw, Search, Settings2, Trash2, Upload } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { CardEditor } from '../components/CardEditor'
@@ -117,7 +117,7 @@ export function DeckPage() {
   if (deck === null || !deck)
     return (
       <EmptyState icon={<Layers size={22} />} title="Deck not found" body="It may have been deleted.">
-        <Button onClick={() => nav('/')}>Go home</Button>
+        <Button onClick={() => nav('/decks')}>All decks</Button>
       </EmptyState>
     )
 
@@ -178,8 +178,8 @@ export function DeckPage() {
     <div>
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <Link to="/" className="text-[13px] text-muted hover:text-fg">
-            Decks
+          <Link to="/decks" className="inline-flex items-center gap-1 text-[13px] text-muted hover:text-fg">
+            <ChevronLeft size={14} /> All decks
           </Link>
           <h1 className="mt-1 flex items-center gap-3 text-2xl font-semibold tracking-tight sm:text-[28px]">
             <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: deck.color }} />
@@ -188,10 +188,10 @@ export function DeckPage() {
           {deck.description && <p className="mt-1 text-sm text-muted">{deck.description}</p>}
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Button variant="primary" onClick={() => nav(`/study?deck=${deck.id}`)} disabled={!counts.total}>
+          <Button variant="primary" onClick={() => nav(`/study?deck=${deck.id}`)} disabled={!counts.total} title={counts.total ? undefined : cards.length ? 'Nothing due right now' : 'Add cards first'}>
             <Layers size={16} /> Study{counts.total ? ` ${counts.total}` : ''}
           </Button>
-          <Button onClick={() => nav(`/test?deck=${deck.id}`)} disabled={cards.length < 1}>
+          <Button onClick={() => nav(`/test?deck=${deck.id}`)} disabled={cards.length < 1} title={cards.length ? undefined : 'Add cards first'}>
             <ClipboardCheck size={16} /> Test
           </Button>
           <Button onClick={() => setAdding(true)}>
@@ -370,7 +370,7 @@ export function DeckPage() {
               onClick={async () => {
                 await deleteDeck(deck.id)
                 toast(`Deleted “${deck.name}”`)
-                nav('/')
+                nav('/decks')
               }}
             >
               Delete deck

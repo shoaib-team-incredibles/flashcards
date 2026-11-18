@@ -1,4 +1,4 @@
-import { BarChart3, ClipboardCheck, CornerDownLeft, FileText, Home, Layers, Plus, Search, Settings, Upload } from 'lucide-react'
+import { BarChart3, BookA, ClipboardCheck, CornerDownLeft, FileText, Home, Languages, Layers, LibraryBig, Plus, Quote, Search, Settings, Upload } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
@@ -41,6 +41,10 @@ export function CommandPalette({ open, onClose, onNewDeck, onNewCard }: { open: 
       { id: 'deck', label: 'Create a deck', icon: <Plus size={16} />, group: 'Actions', run: onNewDeck },
       { id: 'import', label: 'Import cards', icon: <Upload size={16} />, group: 'Actions', run: go('/import') },
       { id: 'home', label: 'Home', icon: <Home size={16} />, group: 'Go to', run: go('/') },
+      { id: 'decks', label: 'All decks', icon: <LibraryBig size={16} />, group: 'Go to', run: go('/decks') },
+      { id: 'french', label: 'French', icon: <Languages size={16} />, group: 'Go to', run: go('/french') },
+      { id: 'english', label: 'English vocabulary', icon: <BookA size={16} />, group: 'Go to', run: go('/english') },
+      { id: 'quotes', label: 'Quotes', icon: <Quote size={16} />, group: 'Go to', run: go('/quotes') },
       { id: 'stats', label: 'Statistics', icon: <BarChart3 size={16} />, group: 'Go to', run: go('/stats') },
       { id: 'settings', label: 'Settings', icon: <Settings size={16} />, group: 'Go to', run: go('/settings') },
     ]

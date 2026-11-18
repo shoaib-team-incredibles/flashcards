@@ -46,12 +46,13 @@ export function TestSetup() {
   const [focus, setFocus] = useState<Focus>(initial.focus)
   const [updateSchedule, setUpdateSchedule] = useState(initial.updateSchedule)
 
+  // Start with every deck that has cards; an empty deck has nothing to ask.
   useEffect(() => {
-    if (!decks || deckIds.length) return
+    if (!decks || !counts || deckIds.length) return
     const p = params.get('deck')
-    setDeckIds(p ? [p] : decks.map((d) => d.id))
+    setDeckIds(p ? [p] : decks.filter((d) => counts.get(d.id)).map((d) => d.id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [decks])
+  }, [decks, counts])
 
   const available = deckIds.reduce((s, id) => s + (counts?.get(id) ?? 0), 0)
   const n = count === 0 ? available : Math.min(count, available)
@@ -72,12 +73,15 @@ export function TestSetup() {
   if (!decks.length)
     return (
       <EmptyState icon={<ClipboardCheck size={22} />} title="Nothing to test yet" body="Create a deck or import some cards first.">
-        <Button variant="primary" onClick={() => nav('/import')}>
-          Import cards
+        <Button variant="primary" onClick={() => nav('/decks')}>
+          Go to decks
         </Button>
+        <Button onClick={() => nav('/import')}>Import cards</Button>
       </EmptyState>
     )
 
+  const testable = decks.filter((d) => counts?.get(d.id))
+  const allOn = testable.length > 0 && testable.every((d) => deckIds.includes(d.id))
   const toggleType = (t: QType) => setTypes((ts) => (ts.includes(t) ? (ts.length > 1 ? ts.filter((x) => x !== t) : ts) : [...ts, t]))
   const toggleDeck = (id: string) => setDeckIds((ds) => (ds.includes(id) ? ds.filter((x) => x !== id) : [...ds, id]))
 
@@ -92,21 +96,25 @@ export function TestSetup() {
               <h3 className="text-sm font-semibold">Decks</h3>
               <button
                 className="text-[13px] font-medium text-accent hover:underline"
-                onClick={() => setDeckIds(deckIds.length === decks.length ? [] : decks.map((d) => d.id))}
+                onClick={() => setDeckIds(allOn ? [] : testable.map((d) => d.id))}
               >
-                {deckIds.length === decks.length ? 'Clear' : 'Select all'}
+                {allOn ? 'Clear' : 'Select all'}
               </button>
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               {decks.map((d) => {
-                const on = deckIds.includes(d.id)
+                const size = counts?.get(d.id) ?? 0
+                const on = size > 0 && deckIds.includes(d.id)
                 return (
                   <button
                     key={d.id}
+                    role="checkbox"
+                    aria-checked={on}
+                    disabled={!size}
                     onClick={() => toggleDeck(d.id)}
                     className={cx(
-                      'flex items-center gap-3 rounded-xl border px-3.5 py-3 text-left transition-all',
-                      on ? 'border-accent bg-accent-soft/60' : 'border-line hover:border-line-strong',
+                      'flex items-center gap-3 rounded-xl border px-3.5 py-3 text-left transition-all disabled:opacity-50',
+                      on ? 'border-accent bg-accent-soft/60' : 'border-line enabled:hover:border-line-strong',
                     )}
                   >
                     <span className={cx('flex h-5 w-5 shrink-0 items-center justify-center rounded-md border', on ? 'border-accent bg-accent text-accent-fg' : 'border-line-strong')}>
@@ -114,7 +122,7 @@ export function TestSetup() {
                     </span>
                     <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: d.color }} />
                     <span className="min-w-0 flex-1 truncate text-sm font-medium">{d.name}</span>
-                    <span className="text-xs text-faint tabular-nums">{counts?.get(d.id) ?? 0}</span>
+                    <span className="text-xs text-faint tabular-nums">{size ? size.toLocaleString() : 'Empty'}</span>
                   </button>
                 )
               })}

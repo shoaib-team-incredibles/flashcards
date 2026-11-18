@@ -7,6 +7,7 @@ import { useTheme } from './lib/hooks'
 import { Dashboard } from './pages/Dashboard'
 import { English } from './pages/English'
 import { DeckPage } from './pages/DeckPage'
+import { Decks } from './pages/Decks'
 import { Import } from './pages/Import'
 import { SettingsPage } from './pages/Settings'
 import { Stats } from './pages/Stats'
@@ -29,9 +30,10 @@ function App() {
           <Route path="/test/run" element={<TestRun />} />
           <Route element={<Layout />}>
             <Route index element={<Dashboard />} />
+            <Route path="/decks" element={<Decks />} />
             <Route path="/deck/:id" element={<DeckPage />} />
             <Route path="/test" element={<TestSetup />} />
-            <Route path="/french" element={<Suspense fallback={<div className="h-64" />}><French /></Suspense>} />
+            <Route path="/french" element={<Suspense fallback={<div className="flex h-64 items-center justify-center text-sm text-muted">Loading French…</div>}><French /></Suspense>} />
             <Route path="/english" element={<English />} />
             <Route path="/import" element={<Import />} />
             <Route path="/quotes" element={<Quotes />} />

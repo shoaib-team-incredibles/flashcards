@@ -237,6 +237,18 @@ export function Modal({
         e.stopPropagation()
         closeRef.current()
       }
+      // Keep Tab inside the dialog.
+      if (e.key === 'Tab' && ref.current) {
+        const els = [...ref.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), summary, [tabindex]:not([tabindex="-1"])')].filter((el) => el.offsetParent !== null)
+        if (!els.length) return
+        const first = els[0]
+        const last = els[els.length - 1]
+        const active = document.activeElement
+        if (e.shiftKey ? active === first || !ref.current.contains(active) : active === last || !ref.current.contains(active)) {
+          e.preventDefault()
+          ;(e.shiftKey ? last : first).focus()
+        }
+      }
     }
     window.addEventListener('keydown', onKey, true)
     document.body.style.overflow = 'hidden'
@@ -275,7 +287,7 @@ export function Modal({
           </IconButton>
         </div>
         <div className="overflow-y-auto px-5 pb-5 sm:px-6">{children}</div>
-        {footer && <div className="flex flex-wrap items-center justify-end gap-2 border-t border-line bg-subtle/50 px-5 py-3.5 sm:px-6">{footer}</div>}
+        {footer && <div className="flex flex-wrap items-center justify-end gap-2 border-t border-line bg-subtle/50 px-5 pt-3.5 pb-[max(0.875rem,env(safe-area-inset-bottom))] sm:px-6 sm:pb-3.5">{footer}</div>}
       </div>
     </div>,
     document.body,

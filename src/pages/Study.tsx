@@ -437,8 +437,8 @@ function Finished({
       )}
       {reviewed > 0 && <p className="mt-4 text-[13px] text-muted">{Math.round((correct / reviewed) * 100)}% recalled</p>}
       <div className="mt-8 flex w-full flex-col gap-2 sm:flex-row">
-        <Button className="flex-1" onClick={() => nav('/')}>
-          <Home size={16} /> Home
+        <Button className="flex-1" onClick={() => nav(deckId ? `/deck/${deckId}` : '/')}>
+          {deckId ? <ArrowLeft size={16} /> : <Home size={16} />} {deckId ? 'Back to deck' : 'Home'}
         </Button>
         <Button variant="primary" className="flex-1" onClick={() => nav(deckId ? `/test?deck=${deckId}` : '/test')}>
           <ClipboardCheck size={16} /> Test yourself

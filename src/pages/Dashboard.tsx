@@ -1,17 +1,21 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { ArrowRight, BookOpen, ClipboardCheck, Flame, Layers, Plus, Quote as QuoteIcon, Sparkles, Target, Upload, Zap } from 'lucide-react'
+import { ArrowRight, BookOpen, ClipboardCheck, Flame, Plus, Quote as QuoteIcon, Sparkles, Target, Upload, Zap } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Heatmap } from '../components/Charts'
+import { DeckCard } from '../components/DeckCard'
 import { Section, useShell } from '../components/Layout'
 import { useToast } from '../components/toast'
-import { Button, Kbd, Panel, Progress, Stat } from '../components/ui'
+import { Button, Kbd, Panel, Stat } from '../components/ui'
 import { db } from '../lib/db'
 import { useDeckSummaries, useHotkeys } from '../lib/hooks'
 import { loadSampleDecks } from '../lib/sample'
 import { byline, quoteOfTheDay, useQuotes } from '../lib/quotes'
 import { computeStreak } from '../lib/session'
 import { DAY, dayKey, formatDuration, greeting, plural, relativeTime, startOfDay } from '../lib/utils'
+
+/** Home shows the decks that need attention; the Decks page has them all. */
+const HOME_DECKS = 6
 
 export function Dashboard() {
   const summaries = useDeckSummaries()
@@ -114,6 +118,7 @@ export function Dashboard() {
     )
   }
 
+  const homeDecks = summaries.slice().sort((a, b) => b.counts.total - a.counts.total).slice(0, HOME_DECKS)
   const est = Math.round((totals.review * 8 + totals.learning * 10 + totals.new * 20) / 60)
 
   return (
@@ -196,48 +201,21 @@ export function Dashboard() {
       <Section
         title="Your decks"
         action={
-          <Button size="sm" variant="ghost" onClick={shell.newDeck}>
-            <Plus size={15} /> New deck
-          </Button>
+          <Link to="/decks" className="text-[13px] font-medium text-accent hover:underline">
+            {summaries.length > HOME_DECKS ? `All ${summaries.length} decks` : 'All decks'}
+          </Link>
         }
       >
         <div className="grid gap-3 sm:grid-cols-2">
-          {summaries.map(({ deck, counts, total, mature }) => (
-            <Link
-              key={deck.id}
-              to={`/deck/${deck.id}`}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lg hover:shadow-black/[0.04]"
-            >
-              <div className="absolute inset-y-0 left-0 w-1" style={{ background: deck.color }} />
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <div className="truncate font-semibold">{deck.name}</div>
-                  <div className="mt-0.5 truncate text-[13px] text-muted">{deck.description || plural(total, 'card')}</div>
-                </div>
-                {counts.total > 0 ? (
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault()
-                      nav(`/study?deck=${deck.id}`)
-                    }}
-                    className="flex shrink-0 items-center gap-1.5 rounded-lg bg-accent-soft px-2.5 py-1.5 text-xs font-semibold text-accent transition-colors hover:bg-accent hover:text-accent-fg"
-                  >
-                    <Layers size={13} /> Study {counts.total}
-                  </button>
-                ) : (
-                  <span className="shrink-0 rounded-lg bg-subtle px-2.5 py-1.5 text-xs font-medium text-faint">Done</span>
-                )}
-              </div>
-              <div className="mt-5 flex items-center gap-4 text-xs text-muted tabular-nums">
-                <span><b className="font-semibold text-easy">{counts.new}</b> new</span>
-                <span><b className="font-semibold text-hard">{counts.learning}</b> learning</span>
-                <span><b className="font-semibold text-good">{counts.review}</b> due</span>
-                <span className="ml-auto">{total ? Math.round((mature / total) * 100) : 0}% mastered</span>
-              </div>
-              <Progress className="mt-2" value={total ? mature / total : 0} color={deck.color} />
-            </Link>
+          {homeDecks.map((s) => (
+            <DeckCard key={s.deck.id} summary={s} />
           ))}
         </div>
+        {summaries.length > HOME_DECKS && (
+          <Link to="/decks" className="mt-3 flex h-11 items-center justify-center gap-2 rounded-xl border border-line bg-surface text-sm font-medium text-muted transition-colors hover:border-line-strong hover:text-fg">
+            Show {summaries.length - HOME_DECKS} more <ArrowRight size={15} />
+          </Link>
+        )}
       </Section>
 
       <Section title="Activity" action={<Link to="/stats" className="text-[13px] font-medium text-accent hover:underline">All stats</Link>}>

@@ -146,7 +146,7 @@ export function SettingsPage() {
               onClick={async () => {
                 await loadSampleDecks()
                 toast('Sample decks added')
-                nav('/')
+                nav('/decks')
               }}
             >
               Add samples
